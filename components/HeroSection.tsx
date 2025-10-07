@@ -13,6 +13,13 @@ export default function HeroSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [codeAnimationKey, setCodeAnimationKey] = useState(0)
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact')
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
@@ -38,7 +45,7 @@ export default function HeroSection() {
   ]
 
   return (
-    <section className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-hidden px-6 sm:px-8 pt-16 sm:pt-0 sm:py-0">
+    <section className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-hidden pt-16 sm:pt-20">
       {/* Mouse-following gradient orb */}
       <motion.div
         className="absolute w-[600px] h-[600px] rounded-full bg-gradient-to-r from-primary/10 via-primary/5 to-transparent blur-3xl pointer-events-none"
@@ -88,13 +95,13 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
               I create comprehensive web and mobile applications with strong expertise in both frontend and backend development.
               With a passion for building robust APIs and database systems while maintaining clean, intuitive user interfaces.
             </p>
 
             {/* Skills */}
-            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8 justify-center lg:justify-start">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-8 justify-center lg:justify-start">
               {skills.map((skill, index) => (
                 <motion.div
                   key={skill}
@@ -110,12 +117,14 @@ export default function HeroSection() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8">
-              <Button size="lg" className="gap-2 text-sm sm:text-base">
-                <Download className="w-4 h-4" />
-                Download Resume
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8">
+              <Button size="lg" className="gap-2 text-sm sm:text-base" asChild>
+                <a href="/nova-ardiansyah-2023.pdf" download>
+                  <Download className="w-4 h-4" />
+                  Download Resume
+                </a>
               </Button>
-              <Button variant="outline" size="lg" className="gap-2 text-sm sm:text-base">
+              <Button variant="outline" size="lg" className="gap-2 text-sm sm:text-base cursor-pointer" onClick={scrollToContact}>
                 <Mail className="w-4 h-4" />
                 Contact Me
               </Button>

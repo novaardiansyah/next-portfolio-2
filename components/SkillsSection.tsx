@@ -92,8 +92,8 @@ export default function SkillsSection() {
     setShuffledTools(shuffleArray(tools))
   }, [])
   return (
-    <section className="bg-background">
-      <div className="container mx-auto px-6 sm:px-8">
+    <section className="py-20 lg:py-24 bg-background">
+      <div className="container mx-auto px-6 sm:px-8 mb-8">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -101,14 +101,18 @@ export default function SkillsSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold mb-4">Skills & Expertise</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-primary via-blue-500 to-purple-600 bg-clip-text text-transparent">
+              Skills & Expertise
+            </span>
+          </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             A comprehensive overview of my technical skills and professional capabilities
           </p>
         </motion.div>
 
-        <Tabs defaultValue="backend" className="mb-16 mt-8">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 max-w-2xl mx-auto mb-20 lg:mb-12 gap-1 lg:gap-0 bg-transparent p-0">
+        <Tabs defaultValue="backend" className="mb-16 mt-6">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 max-w-2xl mx-auto mb-16 gap-1 lg:gap-0 bg-transparent p-0">
             {skillCategories.map((category) => (
               <TabsTrigger
                 key={category.id}
@@ -126,9 +130,9 @@ export default function SkillsSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-center mb-6 lg:mb-8 mt-8 lg:mt-12"
+                className="text-center mb-8 mt-8"
               >
-                <h3 className="text-xl lg:text-2xl font-semibold mb-2">{category.title}</h3>
+                <h3 className="text-xl lg:text-2xl font-bold mb-2">{category.title}</h3>
                 <p className="text-sm lg:text-base text-muted-foreground">{category.description}</p>
               </motion.div>
 
@@ -167,10 +171,10 @@ export default function SkillsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-12 lg:mb-16"
+          className="mb-16"
         >
-          <h3 className="text-xl lg:text-2xl font-semibold text-center mb-6 lg:mb-8">Tools & Technologies</h3>
-          <div className="flex flex-wrap gap-2 lg:gap-3 justify-center px-6">
+          <h3 className="text-xl lg:text-2xl font-bold text-center mb-8">Tools & Technologies</h3>
+          <div className="flex flex-wrap gap-2 lg:gap-3 justify-center px-12">
             {shuffledTools.map((tool, index) => (
               <motion.div
                 key={`${tool}-${index}`}

@@ -8,23 +8,23 @@ import { motion } from "framer-motion"
 
 const projects = [
   {
-    title: "Laravel E-Commerce Platform",
-    description: "Full-stack e-commerce solution built with Laravel and Filament PHP for admin panel, featuring payment integration and inventory management.",
-    image: "/placeholder-project-1.jpg",
-    technologies: ["Laravel", "Filament PHP", "PHP", "MySQL", "Bootstrap CSS"],
-    date: "2024",
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    title: "NovaApp - React Native Finance Management",
+    description: "Modern React Native finance management application built with Expo and TypeScript. Features complete authentication flow with Laravel Sanctum API integration, Material Design UI, and robust user management.",
+    image: "/project-1.png",
+    technologies: ["React Native", "Expo", "TypeScript", "React Navigation", "React Native Paper", "Laravel Sanctum"],
+    date: "2025",
+    githubUrl: "https://github.com/novaardiansyah/react-native-novaapp",
+    liveUrl: null,
     featured: true
   },
   {
-    title: "React Native Delivery App",
-    description: "Cross-platform mobile application for delivery services with real-time tracking and payment processing using React Native and Expo.",
-    image: "/placeholder-project-2.jpg",
-    technologies: ["React Native", "Expo", "Node.js", "Express", "REST API"],
-    date: "2024",
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    title: "Personal Filament v4 Admin Panel",
+    description: "Open-source admin panel built with Laravel 12 and Filament PHP 4, designed for personal utility management with user roles and permissions system.",
+    image: "/project-2.png",
+    technologies: ["Laravel 12", "Filament PHP 4", "PHP 8.3+", "MySQL"],
+    date: "2025",
+    githubUrl: "https://github.com/novaardiansyah/personal-v4",
+    liveUrl: "https://personal-v4.novadev.my.id",
     featured: true
   },
   {
@@ -73,8 +73,8 @@ export default function ProjectsSection() {
   const featuredProjects = projects.filter(project => project.featured)
 
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="container mx-auto px-6 sm:px-8">
+    <section className="py-20 lg:py-24 bg-muted/30">
+      <div className="container mx-auto px-6 sm:px-8 mb-8">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -82,14 +82,18 @@ export default function ProjectsSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-primary via-blue-500 to-purple-600 bg-clip-text text-transparent">
+              Featured Projects
+            </span>
+          </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Here are some of my recent projects that showcase my skills and experience
           </p>
         </motion.div>
 
         {/* Featured Projects */}
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 mb-16 lg:mb-20">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 mb-20">
           {featuredProjects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -100,6 +104,15 @@ export default function ProjectsSection() {
             >
               <Card className="h-full overflow-hidden group hover:shadow-lg transition-all duration-300 border-primary/20">
                 <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5 relative overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to gradient if image fails to load
+                      e.currentTarget.style.display = 'none'
+                    }}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
                   <div className="absolute top-3 right-3">
                     <Badge variant="secondary" className="text-xs">Featured</Badge>
@@ -137,12 +150,14 @@ export default function ProjectsSection() {
                         Code
                       </a>
                     </Button>
-                    <Button size="sm" className="gap-1 text-xs" asChild>
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-3 h-3" />
-                        Live Demo
-                      </a>
-                    </Button>
+                    {project.liveUrl && (
+                      <Button size="sm" className="gap-1 text-xs" asChild>
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-3 h-3" />
+                          Live Demo
+                        </a>
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>

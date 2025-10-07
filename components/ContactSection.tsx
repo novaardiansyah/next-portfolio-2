@@ -95,7 +95,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="py-20 bg-background">
+    <section id="contact" className="py-20 lg:py-24 bg-background">
       <div className="container mx-auto px-6 sm:px-8">
         <motion.div
           className="text-center mb-16"
@@ -104,13 +104,17 @@ export default function ContactSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold mb-4">Get In Touch</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-primary via-blue-500 to-purple-600 bg-clip-text text-transparent">
+              Get In Touch
+            </span>
+          </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             I'm always excited to work on new projects and collaborate with amazing people. Let's create something great together!
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
+        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-20">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -238,7 +242,7 @@ export default function ContactSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-semibold text-center mb-8">What I Can Help With</h3>
+          <h3 className="text-2xl lg:text-3xl font-bold text-center mb-12">What I Can Help With</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <motion.div
@@ -290,9 +294,7 @@ export default function ContactSection() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-2">
-                  Quick Response Guaranteed
-                </h3>
+                <h3 className="text-xl lg:text-2xl font-bold mb-2">Quick Response Guaranteed</h3>
                 <p className="text-sm lg:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                   I typically respond to all inquiries within 24 hours. For urgent projects, feel free to call me directly.
                 </p>
