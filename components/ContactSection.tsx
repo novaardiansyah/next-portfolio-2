@@ -8,25 +8,26 @@ import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Clock, Send, Github, Linkedin, Twitter, Instagram } from "lucide-react"
+import { CONTACT_INFO, SOCIAL_LINKS } from "@/constants/contact"
 
 const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@novaardiansyah.com",
-    link: "mailto:hello@novaardiansyah.com"
+    value: CONTACT_INFO.email.value,
+    link: CONTACT_INFO.email.link
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+1 (555) 123-4567",
-    link: "tel:+15551234567"
+    value: CONTACT_INFO.phone.value,
+    link: CONTACT_INFO.phone.link
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "San Francisco, CA",
-    link: "https://maps.google.com/?q=San+Francisco,+CA"
+    value: CONTACT_INFO.location.value,
+    link: CONTACT_INFO.location.link
   },
   {
     icon: Clock,

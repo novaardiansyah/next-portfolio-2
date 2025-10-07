@@ -6,10 +6,12 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ChevronDown, Download, Mail, Github, Linkedin, Twitter } from "lucide-react"
+import { SOCIAL_LINKS } from "@/constants/contact"
 import { motion } from "framer-motion"
 
 export default function HeroSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [codeAnimationKey, setCodeAnimationKey] = useState(0)
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -20,12 +22,16 @@ export default function HeroSection() {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
-  const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: Mail, href: "mailto:hello@example.com", label: "Email" }
-  ]
+  // Reset animation every 8 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCodeAnimationKey(prev => prev + 1)
+    }, 8000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const socialLinks = SOCIAL_LINKS
 
   const skills = [
     "JavaScript", "PHP", "Next.js", "Node.js", "Express", "Laravel", "Codeigniter", "React Native", "MySQL", "MongoDB"
@@ -130,7 +136,7 @@ export default function HeroSection() {
                     className="rounded-full hover:bg-primary/10 hover:text-primary w-10 h-10 sm:w-11 sm:h-11"
                     asChild
                   >
-                    <a href={link.href} target="_blank" rel="noopener noreferrer">
+                    <a href={link.href} target={link.target} rel="noopener noreferrer">
                       <link.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                       <span className="sr-only">{link.label}</span>
                     </a>
@@ -174,7 +180,13 @@ export default function HeroSection() {
 
               {/* Code content with syntax highlighting background */}
               <div className="bg-slate-900/80">
-                <div className="p-4 font-mono text-xs sm:text-sm leading-relaxed overflow-hidden text-slate-200">
+                <motion.div
+                  key={codeAnimationKey}
+                  className="p-4 font-mono text-xs sm:text-sm leading-relaxed overflow-hidden text-slate-200"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -246,7 +258,7 @@ export default function HeroSection() {
                   >
                     <span className="text-slate-300">{"});"}</span>
                   </motion.div>
-                </div>
+                </motion.div>
                 </div>
 
                 {/* Status bar */}

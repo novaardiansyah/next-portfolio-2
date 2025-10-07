@@ -66,12 +66,12 @@ const tools = [
   "Terminal", "Mozilla Firefox", "AI-Agent", "Git", "Composer", "npm", "Chrome DevTools", "Figma", "Docker", "Sql Server Management Studio"
 ]
 
-const certifications = [
-  "PHP Developer Certification",
-  "Laravel Certified Developer",
-  "React Native Specialist",
-  "REST API Architect",
-  "Full Stack JavaScript Developer"
+const keyAchievements = [
+  "Built RESTful APIs with Laravel and Node.js",
+  "Developed Full Stack Web Applications",
+  "Optimized Database Performance",
+  "Created Mobile Apps with React Native",
+  "Implemented Real-time Systems"
 ]
 
 // Function to shuffle array

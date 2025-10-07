@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { motion } from "framer-motion"
 import { Calendar, MapPin, Mail, Phone, GraduationCap, Briefcase, Award } from "lucide-react"
+import { CONTACT_INFO, PERSONAL_INFO } from "@/constants/contact"
 
 const timeline = [
   {
@@ -49,11 +50,11 @@ const education = [
 ]
 
 const achievements = [
-  "Laravel Certified Developer",
-  "PHP Specialist Certification",
-  "React Native Mobile App Developer",
-  "REST API Architecture Expert",
-  "Full Stack JavaScript Developer"
+  "Built RESTful APIs with Laravel and Node.js",
+  "Developed Full Stack Web Applications",
+  "Optimized Database Performance",
+  "Created Mobile Apps with React Native",
+  "Implemented Real-time Systems"
 ]
 
 export default function AboutSection() {
@@ -95,19 +96,25 @@ export default function AboutSection() {
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-3">
                   <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground flex-shrink-0" />
-                  <span className="text-sm sm:text-base">San Francisco, CA</span>
+                  <a href={CONTACT_INFO.location.link} target="_blank" rel="noopener noreferrer" className="text-sm sm:text-base hover:text-primary transition-colors">
+                    {CONTACT_INFO.location.value}
+                  </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground flex-shrink-0" />
-                  <span className="text-sm sm:text-base">hello@johndoe.com</span>
+                  <a href={CONTACT_INFO.email.link} className="text-sm sm:text-base hover:text-primary transition-colors">
+                    {CONTACT_INFO.email.value}
+                  </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground flex-shrink-0" />
-                  <span className="text-sm sm:text-base">+1 (555) 123-4567</span>
+                  <a href={CONTACT_INFO.phone.link} className="text-sm sm:text-base hover:text-primary transition-colors">
+                    {CONTACT_INFO.phone.value}
+                  </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground flex-shrink-0" />
-                  <span className="text-sm sm:text-base">Available for freelance</span>
+                  <span className="text-sm sm:text-base">Open for opportunities</span>
                 </div>
 
                 <div className="pt-4">
@@ -146,7 +153,7 @@ export default function AboutSection() {
                 </p>
 
                 <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                  When I'm not coding, you can find me contributing to open-source projects, writing technical articles, or exploring new technologies. I'm also passionate about mentoring aspiring developers and sharing knowledge with the community.
+                  When I'm not coding, you can find me exploring new technologies, working on personal projects, or diving deep into database optimization and system architecture. I enjoy solving complex technical challenges and continuously learning about the latest developments in web and mobile development.
                 </p>
 
                 <div>
