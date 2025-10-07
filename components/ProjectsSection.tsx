@@ -71,7 +71,6 @@ const projects = [
 
 export default function ProjectsSection() {
   const featuredProjects = projects.filter(project => project.featured)
-  const otherProjects = projects.filter(project => !project.featured)
 
   return (
     <section className="py-20 bg-muted/30">
@@ -150,88 +149,6 @@ export default function ProjectsSection() {
             </motion.div>
           ))}
         </div>
-
-        {/* Other Projects */}
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-3xl font-bold mb-4">Other Notable Projects</h3>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {otherProjects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card className="h-full group hover:shadow-md transition-all duration-300">
-                <div className="aspect-video bg-gradient-to-br from-primary/5 to-muted/50 relative overflow-hidden">
-                  <div className="absolute top-3 right-3">
-                    <div className="text-xs text-muted-foreground flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      {project.date}
-                    </div>
-                  </div>
-                </div>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className="text-sm">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                    {project.technologies.length > 3 && (
-                      <Badge variant="secondary" className="text-xs">
-                        +{project.technologies.length - 3}
-                      </Badge>
-                    )}
-                  </div>
-                  <div className="flex gap-2">
-                    <Button variant="ghost" size="sm" className="h-8 px-3" asChild>
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4" />
-                      </a>
-                    </Button>
-                    <Button variant="ghost" size="sm" className="h-8 px-3" asChild>
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* View All Projects Button */}
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <Button variant="outline" size="lg" className="gap-2">
-            View All Projects on GitHub
-            <ExternalLink className="w-4 h-4" />
-          </Button>
-        </motion.div>
       </div>
     </section>
   )

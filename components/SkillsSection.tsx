@@ -75,7 +75,7 @@ const certifications = [
 
 export default function SkillsSection() {
   return (
-    <section className="py-20 bg-background">
+    <section className="bg-background">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-16"
@@ -90,13 +90,13 @@ export default function SkillsSection() {
           </p>
         </motion.div>
 
-        <Tabs defaultValue="frontend" className="mb-16 mt-16">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 max-w-2xl mx-auto mb-8 lg:mb-12 gap-1 lg:gap-0">
+        <Tabs defaultValue="frontend" className="mb-16 mt-8">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 max-w-2xl mx-auto mb-20 lg:mb-12 gap-1 lg:gap-0 bg-transparent p-0">
             {skillCategories.map((category) => (
               <TabsTrigger
                 key={category.id}
                 value={category.id}
-                className="text-xs lg:text-sm px-2 lg:px-3 py-2 lg:py-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                className="text-xs lg:text-sm px-2 lg:px-3 py-3 lg:py-2 h-auto bg-background hover:bg-muted data-[state=active]:bg-primary data-[state=active]:text-primary-foreground whitespace-normal text-center leading-tight shadow-none"
               >
                 {category.title}
               </TabsTrigger>
@@ -109,7 +109,7 @@ export default function SkillsSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-center mb-6 lg:mb-8"
+                className="text-center mb-6 lg:mb-8 mt-8 lg:mt-12"
               >
                 <h3 className="text-xl lg:text-2xl font-semibold mb-2">{category.title}</h3>
                 <p className="text-sm lg:text-base text-muted-foreground">{category.description}</p>
