@@ -9,6 +9,19 @@ import { motion } from "framer-motion"
 
 const skillCategories = [
   {
+    id: "backend",
+    title: "Backend Development",
+    description: "Creating robust server-side applications",
+    skills: [
+      { name: "PHP", level: 92, icon: "🐘" },
+      { name: "REST APIs", level: 94, icon: "🔗" },
+      { name: "Node.js", level: 90, icon: "🟢" },
+      { name: "Laravel", level: 85, icon: "🔺" },
+      { name: "Express", level: 88, icon: "🚂" },
+      { name: "Codeigniter", level: 82, icon: "🔥" }
+    ]
+  },
+  {
     id: "frontend",
     title: "Frontend Development",
     description: "Building modern, responsive user interfaces",
@@ -16,22 +29,9 @@ const skillCategories = [
       { name: "JavaScript", level: 95, icon: "🟨" },
       { name: "React", level: 90, icon: "⚛️" },
       { name: "Next.js", level: 92, icon: "▲" },
-      { name: "React Native", level: 85, icon: "📱" },
       { name: "Bootstrap CSS", level: 88, icon: "🅱️" },
+      { name: "React Native", level: 85, icon: "📱" },
       { name: "Expo", level: 80, icon: "🚀" }
-    ]
-  },
-  {
-    id: "backend",
-    title: "Backend Development",
-    description: "Creating robust server-side applications",
-    skills: [
-      { name: "PHP", level: 92, icon: "🐘" },
-      { name: "Node.js", level: 90, icon: "🟢" },
-      { name: "Express", level: 88, icon: "🚂" },
-      { name: "Laravel", level: 85, icon: "🔺" },
-      { name: "Codeigniter", level: 82, icon: "🔥" },
-      { name: "REST APIs", level: 94, icon: "🔗" }
     ]
   },
   {
@@ -63,7 +63,7 @@ const skillCategories = [
 
 const tools = [
   "VS Code", "Ubuntu Server", "Aapanel", "Postman", "Android Studio",
-  "Terminal", "Mozilla Firefox", "AI-Agent", "Git", "Composer", "npm", "Chrome DevTools", "Figma"
+  "Terminal", "Mozilla Firefox", "AI-Agent", "Git", "Composer", "npm", "Chrome DevTools", "Figma", "Docker", "Sql Server Management Studio"
 ]
 
 const certifications = [
@@ -107,7 +107,7 @@ export default function SkillsSection() {
           </p>
         </motion.div>
 
-        <Tabs defaultValue="frontend" className="mb-16 mt-8">
+        <Tabs defaultValue="backend" className="mb-16 mt-8">
           <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 max-w-2xl mx-auto mb-20 lg:mb-12 gap-1 lg:gap-0 bg-transparent p-0">
             {skillCategories.map((category) => (
               <TabsTrigger
@@ -170,7 +170,7 @@ export default function SkillsSection() {
           className="mb-12 lg:mb-16"
         >
           <h3 className="text-xl lg:text-2xl font-semibold text-center mb-6 lg:mb-8">Tools & Technologies</h3>
-          <div className="flex flex-wrap gap-2 lg:gap-3 justify-center">
+          <div className="flex flex-wrap gap-2 lg:gap-3 justify-center px-6">
             {shuffledTools.map((tool, index) => (
               <motion.div
                 key={`${tool}-${index}`}

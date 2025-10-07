@@ -113,7 +113,7 @@ export default function AboutSection() {
                 <div className="pt-4">
                   <h4 className="font-semibold mb-3">Interests</h4>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {["PHP Development", "JavaScript Frameworks", "Mobile Development", "API Design", "Open Source", "Tech Blogging"].map((interest) => (
+                    {["API Development", "Database Design", "System Architecture", "PHP Frameworks", "Open Source", "Performance Optimization"].map((interest) => (
                       <Badge key={interest} variant="secondary" className="text-xs px-2 py-1">
                         {interest}
                       </Badge>
@@ -138,11 +138,11 @@ export default function AboutSection() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                  Hello! I'm Nova, a passionate full-stack developer with expertise in both PHP and JavaScript ecosystems. I specialize in building modern web applications using Laravel, Codeigniter, Node.js, and React Native. My journey started with PHP web development and expanded to include modern JavaScript frameworks and cross-platform mobile development.
+                  Hello! I'm Nova, a versatile fullstack developer with strong expertise in backend technologies. I create comprehensive web applications from user interface to server architecture, with deep knowledge of both frontend and backend development. My journey spans from building responsive user interfaces to designing robust APIs and database systems.
                 </p>
 
                 <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                  I have strong expertise in REST API development, PHP frameworks including Laravel and Codeigniter, and mobile development with React Native and Expo. I'm also experienced with Filament PHP for building admin panels and Bootstrap CSS for responsive design. I believe in writing clean, maintainable code and staying up-to-date with the latest industry trends.
+                  My core strength lies in backend development with PHP, Laravel, and Node.js, where I excel at creating scalable APIs and optimizing database performance. However, I'm equally comfortable working with frontend technologies like React and React Native, allowing me to deliver complete solutions. I specialize in fullstack development with an emphasis on powerful backend systems.
                 </p>
 
                 <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
