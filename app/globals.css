@@ -143,3 +143,15 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Better tabs for mobile */
+@media (max-width: 640px) {
+  .radix-tabs-list {
+    gap: 0.25rem;
+  }
+
+  .radix-tabs-trigger {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+}

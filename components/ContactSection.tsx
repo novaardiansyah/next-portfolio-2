@@ -13,8 +13,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@johndoe.com",
-    link: "mailto:hello@johndoe.com"
+    value: "hello@novaardiansyah.com",
+    link: "mailto:hello@novaardiansyah.com"
   },
   {
     icon: Phone,
@@ -40,25 +40,25 @@ const socialLinks = [
   {
     icon: Github,
     platform: "GitHub",
-    url: "https://github.com/johndoe",
+    url: "https://github.com/novaardiansyah",
     color: "hover:text-gray-900 dark:hover:text-white"
   },
   {
     icon: Linkedin,
     platform: "LinkedIn",
-    url: "https://linkedin.com/in/johndoe",
+    url: "https://linkedin.com/in/novaardiansyah",
     color: "hover:text-blue-600"
   },
   {
     icon: Twitter,
     platform: "Twitter",
-    url: "https://twitter.com/johndoe",
+    url: "https://twitter.com/novaardiansyah",
     color: "hover:text-blue-400"
   },
   {
     icon: Instagram,
     platform: "Instagram",
-    url: "https://instagram.com/johndoe",
+    url: "https://instagram.com/novaardiansyah",
     color: "hover:text-pink-600"
   }
 ]
@@ -279,25 +279,52 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-16"
         >
-          <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg p-8 border border-primary/20">
-            <h3 className="text-2xl font-semibold mb-4">Quick Response Guaranteed</h3>
-            <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">
-              I typically respond to all inquiries within 24 hours. For urgent projects, feel free to call me directly or mention "URGENT" in your message subject.
-            </p>
-            <div className="flex justify-center gap-4">
-              <Badge variant="outline" className="px-4 py-2">
-                📧 Response Time: &lt;24 hours
-              </Badge>
-              <Badge variant="outline" className="px-4 py-2">
-                🌍 Available Worldwide
-              </Badge>
-              <Badge variant="outline" className="px-4 py-2">
-                💬 Free Consultation
-              </Badge>
-            </div>
-          </div>
+          <Card className="bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 border-primary/20 shadow-lg">
+            <CardContent className="p-6 lg:p-8">
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-primary to-primary/60 rounded-full mb-4">
+                  <svg className="w-6 h-6 lg:w-8 lg:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-2">
+                  Quick Response Guaranteed
+                </h3>
+                <p className="text-sm lg:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                  I typically respond to all inquiries within 24 hours. For urgent projects, feel free to call me directly.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 lg:gap-4">
+                <div className="flex flex-col items-center p-3 lg:p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
+                  <div className="text-2xl lg:text-3xl mb-2">📧</div>
+                  <p className="text-xs lg:text-sm font-medium text-center">Response Time</p>
+                  <p className="text-sm lg:text-base font-semibold text-primary">&lt;24 hours</p>
+                </div>
+                <div className="flex flex-col items-center p-3 lg:p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
+                  <div className="text-2xl lg:text-3xl mb-2">🌍</div>
+                  <p className="text-xs lg:text-sm font-medium text-center">Availability</p>
+                  <p className="text-sm lg:text-base font-semibold text-primary">Worldwide</p>
+                </div>
+                <div className="flex flex-col items-center p-3 lg:p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
+                  <div className="text-2xl lg:text-3xl mb-2">💬</div>
+                  <p className="text-xs lg:text-sm font-medium text-center">Consultation</p>
+                  <p className="text-sm lg:text-base font-semibold text-primary">Free</p>
+                </div>
+              </div>
+
+              <div className="text-center mt-4 lg:mt-6">
+                <Button variant="outline" size="lg" className="gap-2 border-primary/30 hover:bg-primary/10">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  Send Urgent Message
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     </section>

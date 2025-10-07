@@ -75,9 +75,9 @@ export default function Header() {
             className="flex items-center gap-2"
           >
             <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/60 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">JD</span>
+              <span className="text-white font-bold text-sm">NA</span>
             </div>
-            <span className="font-bold text-xl">John Doe</span>
+            <span className="font-bold text-xl">Nova Ardiansyah</span>
           </motion.div>
 
           {/* Desktop Navigation */}

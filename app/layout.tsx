@@ -13,24 +13,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "John Doe - Full Stack Developer Portfolio",
+  title: "Nova Ardiansyah - Full Stack Developer Portfolio",
   description: "Passionate full-stack developer creating modern web applications with React, TypeScript, and cutting-edge technologies.",
   keywords: ["Full Stack Developer", "Web Developer", "React", "TypeScript", "Next.js", "Portfolio"],
-  authors: [{ name: "John Doe" }],
-  creator: "John Doe",
+  authors: [{ name: "Nova Ardiansyah" }],
+  creator: "Nova Ardiansyah",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://johndoe.dev",
-    title: "John Doe - Full Stack Developer Portfolio",
+    url: "https://novaardiansyah.dev",
+    title: "Nova Ardiansyah - Full Stack Developer Portfolio",
     description: "Passionate full-stack developer creating modern web applications with React, TypeScript, and cutting-edge technologies.",
-    siteName: "John Doe Portfolio",
+    siteName: "Nova Ardiansyah Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "John Doe - Full Stack Developer Portfolio",
+    title: "Nova Ardiansyah - Full Stack Developer Portfolio",
     description: "Passionate full-stack developer creating modern web applications with React, TypeScript, and cutting-edge technologies.",
-    creator: "@johndoe",
+    creator: "@novaardiansyah",
   },
   robots: {
     index: true,

@@ -90,28 +90,32 @@ export default function SkillsSection() {
           </p>
         </motion.div>
 
-        <Tabs defaultValue="frontend" className="mb-16">
-          <TabsList className="grid w-full grid-cols-4 max-w-2xl mx-auto mb-8">
+        <Tabs defaultValue="frontend" className="mb-16 mt-16">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 max-w-2xl mx-auto mb-8 lg:mb-12 gap-1 lg:gap-0">
             {skillCategories.map((category) => (
-              <TabsTrigger key={category.id} value={category.id} className="text-sm">
+              <TabsTrigger
+                key={category.id}
+                value={category.id}
+                className="text-xs lg:text-sm px-2 lg:px-3 py-2 lg:py-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              >
                 {category.title}
               </TabsTrigger>
             ))}
           </TabsList>
 
           {skillCategories.map((category) => (
-            <TabsContent key={category.id} value={category.id} className="space-y-6">
+            <TabsContent key={category.id} value={category.id} className="space-y-6 lg:space-y-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-center mb-8"
+                className="text-center mb-6 lg:mb-8"
               >
-                <h3 className="text-2xl font-semibold mb-2">{category.title}</h3>
-                <p className="text-muted-foreground">{category.description}</p>
+                <h3 className="text-xl lg:text-2xl font-semibold mb-2">{category.title}</h3>
+                <p className="text-sm lg:text-base text-muted-foreground">{category.description}</p>
               </motion.div>
 
-              <div className="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 max-w-4xl mx-auto">
                 {category.skills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -120,17 +124,17 @@ export default function SkillsSection() {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
                     <Card className="h-full">
-                      <CardContent className="p-4 sm:p-6">
-                        <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <CardContent className="p-3 sm:p-4 lg:p-6">
+                        <div className="flex items-center justify-between mb-2 sm:mb-3 lg:mb-4">
                           <div className="flex items-center gap-2 sm:gap-3">
-                            <span className="text-xl sm:text-2xl">{skill.icon}</span>
+                            <span className="text-lg sm:text-xl lg:text-2xl">{skill.icon}</span>
                             <h4 className="font-semibold text-sm sm:text-base">{skill.name}</h4>
                           </div>
                           <span className="text-xs sm:text-sm text-muted-foreground font-medium">
                             {skill.level}%
                           </span>
                         </div>
-                        <Progress value={skill.level} className="h-2" />
+                        <Progress value={skill.level} className="h-1.5 sm:h-2" />
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -146,10 +150,10 @@ export default function SkillsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-12 lg:mb-16"
         >
-          <h3 className="text-2xl font-semibold text-center mb-8">Tools & Technologies</h3>
-          <div className="flex flex-wrap gap-3 justify-center">
+          <h3 className="text-xl lg:text-2xl font-semibold text-center mb-6 lg:mb-8">Tools & Technologies</h3>
+          <div className="flex flex-wrap gap-2 lg:gap-3 justify-center">
             {tools.map((tool, index) => (
               <motion.div
                 key={tool}
@@ -158,7 +162,7 @@ export default function SkillsSection() {
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 viewport={{ once: true }}
               >
-                <Badge variant="outline" className="px-4 py-2 text-sm hover:bg-primary/5 transition-colors">
+                <Badge variant="outline" className="px-3 py-1.5 lg:px-4 lg:py-2 text-xs lg:text-sm hover:bg-primary/5 transition-colors">
                   {tool}
                 </Badge>
               </motion.div>
@@ -166,31 +170,6 @@ export default function SkillsSection() {
           </div>
         </motion.div>
 
-        {/* Certifications */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl font-semibold text-center mb-8">Certifications</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={cert}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="h-full text-center p-6 hover:shadow-md transition-shadow">
-                  <div className="text-3xl mb-3">🏆</div>
-                  <p className="text-sm font-medium">{cert}</p>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   )

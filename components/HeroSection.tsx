@@ -20,7 +20,7 @@ export default function HeroSection() {
   ]
 
   return (
-    <section className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-hidden px-4 py-8 sm:py-0">
+    <section className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-hidden px-4 pt-16 sm:pt-0 sm:py-0">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(6)].map((_, i) => (
@@ -59,12 +59,12 @@ export default function HeroSection() {
               <Avatar className="w-16 h-16 sm:w-20 sm:h-20 border-4 border-primary/20 flex-shrink-0">
                 <AvatarImage src="/placeholder-avatar.jpg" alt="Profile" />
                 <AvatarFallback className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 text-primary-foreground">
-                  JD
+                  NA
                 </AvatarFallback>
               </Avatar>
               <div className="text-center sm:text-left">
                 <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                  John Doe
+                  Nova Ardiansyah
                 </h1>
                 <p className="text-lg sm:text-xl text-muted-foreground mt-1 sm:mt-2">
                   Full Stack Developer & UI/UX Designer
