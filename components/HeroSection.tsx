@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -8,6 +9,31 @@ import { ChevronDown, Download, Mail, Github, Linkedin, Twitter } from "lucide-r
 import { motion } from "framer-motion"
 
 export default function HeroSection() {
+  const [animationElements, setAnimationElements] = useState<Array<{
+    width: number
+    height: number
+    left: string
+    top: string
+    x: number[]
+    y: number[]
+    duration: number
+  }>>([])
+
+  useEffect(() => {
+    // Generate random values only on the client side
+    setAnimationElements(
+      [...Array(6)].map(() => ({
+        width: Math.random() * 300 + 100,
+        height: Math.random() * 300 + 100,
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        x: [0, Math.random() * 100 - 50],
+        y: [0, Math.random() * 100 - 50],
+        duration: Math.random() * 20 + 10,
+      }))
+    )
+  }, [])
+
   const socialLinks = [
     { icon: Github, href: "https://github.com", label: "GitHub" },
     { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
@@ -23,22 +49,22 @@ export default function HeroSection() {
     <section className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-hidden px-4 pt-16 sm:pt-0 sm:py-0">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(6)].map((_, i) => (
+        {animationElements.map((element, i) => (
           <motion.div
             key={i}
             className="absolute bg-primary/5 rounded-full"
             style={{
-              width: Math.random() * 300 + 100,
-              height: Math.random() * 300 + 100,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              width: element.width,
+              height: element.height,
+              left: element.left,
+              top: element.top,
             }}
             animate={{
-              x: [0, Math.random() * 100 - 50],
-              y: [0, Math.random() * 100 - 50],
+              x: element.x,
+              y: element.y,
             }}
             transition={{
-              duration: Math.random() * 20 + 10,
+              duration: element.duration,
               repeat: Infinity,
               repeatType: "reverse",
             }}

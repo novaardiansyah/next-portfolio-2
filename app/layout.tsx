@@ -18,6 +18,15 @@ export const metadata: Metadata = {
   keywords: ["Full Stack Developer", "Web Developer", "React", "TypeScript", "Next.js", "Portfolio"],
   authors: [{ name: "Nova Ardiansyah" }],
   creator: "Nova Ardiansyah",
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' }
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

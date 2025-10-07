@@ -19,8 +19,14 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
   const [isDark, setIsDark] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
+    setIsMounted(true)
+
+    // Set initial scroll state
+    setIsScrolled(window.scrollY > 50)
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
 
@@ -47,6 +53,8 @@ export default function Header() {
   }, [])
 
   const scrollToSection = (href: string) => {
+    if (!isMounted) return
+
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
