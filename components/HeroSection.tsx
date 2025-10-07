@@ -42,11 +42,11 @@ export default function HeroSection() {
   ]
 
   const skills = [
-    "React", "TypeScript", "Next.js", "Node.js", "Python", "AWS", "Docker", "GraphQL"
+    "JavaScript", "PHP", "Next.js", "Node.js", "Express", "Laravel", "Codeigniter", "React Native"
   ]
 
   return (
-    <section className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-hidden px-4 pt-16 sm:pt-0 sm:py-0">
+    <section className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-hidden px-6 sm:px-8 pt-16 sm:pt-0 sm:py-0">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         {animationElements.map((element, i) => (
@@ -72,7 +72,7 @@ export default function HeroSection() {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-6 sm:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           {/* Left Content */}
           <motion.div
@@ -83,7 +83,7 @@ export default function HeroSection() {
           >
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-6">
               <Avatar className="w-16 h-16 sm:w-20 sm:h-20 border-4 border-primary/20 flex-shrink-0">
-                <AvatarImage src="/placeholder-avatar.jpg" alt="Profile" />
+                <AvatarImage src="/original-blue-circle.png" alt="Profile" />
                 <AvatarFallback className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 text-primary-foreground">
                   NA
                 </AvatarFallback>

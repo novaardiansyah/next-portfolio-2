@@ -8,60 +8,60 @@ import { motion } from "framer-motion"
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution with real-time inventory management and payment processing.",
+    title: "Laravel E-Commerce Platform",
+    description: "Full-stack e-commerce solution built with Laravel and Filament PHP for admin panel, featuring payment integration and inventory management.",
     image: "/placeholder-project-1.jpg",
-    technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Redis"],
+    technologies: ["Laravel", "Filament PHP", "PHP", "MySQL", "Bootstrap CSS"],
     date: "2024",
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
     featured: true
   },
   {
-    title: "Task Management System",
-    description: "Collaborative task management tool with real-time updates and team analytics.",
+    title: "React Native Delivery App",
+    description: "Cross-platform mobile application for delivery services with real-time tracking and payment processing using React Native and Expo.",
     image: "/placeholder-project-2.jpg",
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express"],
+    technologies: ["React Native", "Expo", "Node.js", "Express", "REST API"],
     date: "2024",
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
     featured: true
   },
   {
-    title: "AI Content Generator",
-    description: "AI-powered content generation tool with multiple templates and custom models.",
+    title: "Codeigniter CRM System",
+    description: "Customer Relationship Management system built with Codeigniter, featuring lead tracking and reporting dashboard.",
     image: "/placeholder-project-3.jpg",
-    technologies: ["Python", "FastAPI", "OpenAI", "React", "Docker"],
+    technologies: ["Codeigniter", "PHP", "MySQL", "JavaScript", "Bootstrap CSS"],
     date: "2023",
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
     featured: false
   },
   {
-    title: "Social Media Dashboard",
-    description: "Comprehensive analytics dashboard for social media management and scheduling.",
+    title: "Next.js Blog Platform",
+    description: "Modern blog platform with Next.js, featuring MDX support, SEO optimization, and responsive design.",
     image: "/placeholder-project-4.jpg",
-    technologies: ["Vue.js", "Nuxt.js", "Chart.js", "Firebase", "Tailwind"],
+    technologies: ["Next.js", "JavaScript", "Node.js", "Express", "MongoDB"],
     date: "2023",
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
     featured: false
   },
   {
-    title: "Mobile Banking App",
-    description: "Secure mobile banking application with biometric authentication and real-time transactions.",
+    title: "Cordova Enterprise App",
+    description: "Enterprise mobile application using Cordova with offline capabilities and data synchronization.",
     image: "/placeholder-project-5.jpg",
-    technologies: ["React Native", "TypeScript", "Node.js", "AWS", "PostgreSQL"],
+    technologies: ["Cordova", "JavaScript", "PHP", "Laravel", "REST API"],
     date: "2023",
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
     featured: false
   },
   {
-    title: "Real Estate Platform",
-    description: "Modern real estate platform with virtual tours and advanced search filters.",
+    title: "REST API Gateway",
+    description: "Comprehensive REST API gateway built with Node.js and Express, serving multiple frontend applications.",
     image: "/placeholder-project-6.jpg",
-    technologies: ["Next.js", "TypeScript", "Mapbox", "Prisma", "PostgreSQL"],
+    technologies: ["Node.js", "Express", "JavaScript", "MongoDB", "Docker"],
     date: "2022",
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
@@ -74,7 +74,7 @@ export default function ProjectsSection() {
 
   return (
     <section className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 sm:px-8">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}

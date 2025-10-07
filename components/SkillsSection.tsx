@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
@@ -12,12 +13,12 @@ const skillCategories = [
     title: "Frontend Development",
     description: "Building modern, responsive user interfaces",
     skills: [
-      { name: "React", level: 95, icon: "⚛️" },
-      { name: "TypeScript", level: 90, icon: "📝" },
-      { name: "Next.js", level: 88, icon: "▲" },
-      { name: "Vue.js", level: 75, icon: "💚" },
-      { name: "Tailwind CSS", level: 92, icon: "🎨" },
-      { name: "Framer Motion", level: 80, icon: "🎭" }
+      { name: "JavaScript", level: 95, icon: "🟨" },
+      { name: "React", level: 90, icon: "⚛️" },
+      { name: "Next.js", level: 92, icon: "▲" },
+      { name: "React Native", level: 85, icon: "📱" },
+      { name: "Bootstrap CSS", level: 88, icon: "🅱️" },
+      { name: "Expo", level: 80, icon: "🚀" }
     ]
   },
   {
@@ -25,58 +26,74 @@ const skillCategories = [
     title: "Backend Development",
     description: "Creating robust server-side applications",
     skills: [
+      { name: "PHP", level: 92, icon: "🐘" },
       { name: "Node.js", level: 90, icon: "🟢" },
-      { name: "Python", level: 85, icon: "🐍" },
-      { name: "Express.js", level: 88, icon: "🚂" },
-      { name: "FastAPI", level: 82, icon: "⚡" },
-      { name: "GraphQL", level: 78, icon: "📊" },
-      { name: "REST APIs", level: 92, icon: "🔗" }
+      { name: "Express", level: 88, icon: "🚂" },
+      { name: "Laravel", level: 85, icon: "🔺" },
+      { name: "Codeigniter", level: 82, icon: "🔥" },
+      { name: "REST APIs", level: 94, icon: "🔗" }
     ]
   },
   {
-    id: "database",
-    title: "Database & Storage",
-    description: "Managing data efficiently and securely",
+    id: "mobile",
+    title: "Mobile Development",
+    description: "Cross-platform mobile applications",
     skills: [
-      { name: "PostgreSQL", level: 85, icon: "🐘" },
-      { name: "MongoDB", level: 80, icon: "🍃" },
-      { name: "Redis", level: 75, icon: "🔴" },
-      { name: "Firebase", level: 82, icon: "🔥" },
-      { name: "Prisma", level: 78, icon: "🔮" },
-      { name: "Docker", level: 80, icon: "🐳" }
+      { name: "React Native", level: 85, icon: "📱" },
+      { name: "Expo", level: 80, icon: "🚀" },
+      { name: "Cordova", level: 75, icon: "🔌" },
+      { name: "JavaScript", level: 88, icon: "🟨" },
+      { name: "Mobile UI/UX", level: 82, icon: "🎨" }
     ]
   },
   {
-    id: "cloud",
-    title: "Cloud & DevOps",
-    description: "Deploying and managing applications at scale",
+    id: "php-frameworks",
+    title: "PHP Ecosystem",
+    description: "PHP frameworks and admin panels",
     skills: [
-      { name: "AWS", level: 85, icon: "☁️" },
-      { name: "Vercel", level: 90, icon: "▲" },
-      { name: "Git", level: 92, icon: "📂" },
-      { name: "CI/CD", level: 80, icon: "🔄" },
-      { name: "Linux", level: 75, icon: "🐧" },
-      { name: "Nginx", level: 70, icon: "🔧" }
+      { name: "Laravel", level: 90, icon: "🔺" },
+      { name: "Codeigniter", level: 85, icon: "🔥" },
+      { name: "Filament PHP", level: 88, icon: "📊" },
+      { name: "PHP", level: 94, icon: "🐘" },
+      { name: "Composer", level: 86, icon: "🎼" },
+      { name: "MySQL", level: 82, icon: "🗄️" }
     ]
   }
 ]
 
 const tools = [
-  "VS Code", "IntelliJ IDEA", "Figma", "Postman", "Docker Desktop", "GitKraken",
-  "Chrome DevTools", "Terminal", "Webpack", "Vite", "ESLint", "Prettier"
+  "VS Code", "Ubuntu Server", "Aapanel", "Postman", "Android Studio",
+  "Terminal", "Mozilla Firefox", "AI-Agent", "Git", "Composer", "npm", "Chrome DevTools", "Figma"
 ]
 
 const certifications = [
-  "AWS Certified Developer Associate",
-  "Google Cloud Professional Developer",
-  "MongoDB Certified Developer",
-  "React Developer Certification"
+  "PHP Developer Certification",
+  "Laravel Certified Developer",
+  "React Native Specialist",
+  "REST API Architect",
+  "Full Stack JavaScript Developer"
 ]
 
+// Function to shuffle array
+const shuffleArray = (array: string[]) => {
+  const newArray = [...array]
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]]
+  }
+  return newArray
+}
+
 export default function SkillsSection() {
+  const [shuffledTools, setShuffledTools] = useState<string[]>([])
+
+  useEffect(() => {
+    // Shuffle tools only on client side
+    setShuffledTools(shuffleArray(tools))
+  }, [])
   return (
     <section className="bg-background">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 sm:px-8">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -154,9 +171,9 @@ export default function SkillsSection() {
         >
           <h3 className="text-xl lg:text-2xl font-semibold text-center mb-6 lg:mb-8">Tools & Technologies</h3>
           <div className="flex flex-wrap gap-2 lg:gap-3 justify-center">
-            {tools.map((tool, index) => (
+            {shuffledTools.map((tool, index) => (
               <motion.div
-                key={tool}
+                key={`${tool}-${index}`}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}

@@ -11,25 +11,25 @@ const timeline = [
     year: "2024 - Present",
     title: "Senior Full Stack Developer",
     company: "Tech Innovations Inc.",
-    description: "Leading development of scalable web applications and mentoring junior developers."
+    description: "Leading development of Laravel and React Native applications, implementing REST APIs, and mentoring team on modern PHP practices."
   },
   {
     year: "2022 - 2024",
     title: "Full Stack Developer",
     company: "Digital Solutions Co.",
-    description: "Developed and maintained multiple client projects using modern tech stack."
+    description: "Developed multiple web applications using Laravel, Codeigniter, and React Native. Built REST APIs and implemented responsive designs with Bootstrap CSS."
   },
   {
     year: "2020 - 2022",
-    title: "Frontend Developer",
-    company: "Creative Agency Pro",
-    description: "Focused on creating responsive and interactive user interfaces."
+    title: "PHP Developer",
+    company: "Web Solutions Ltd.",
+    description: "Specialized in PHP development with Laravel and Codeigniter frameworks. Created custom admin panels and integrated third-party APIs."
   },
   {
     year: "2019 - 2020",
-    title: "Junior Developer",
+    title: "Junior Web Developer",
     company: "StartUp Hub",
-    description: "Started my professional journey building web applications."
+    description: "Started professional journey building websites with PHP, JavaScript, and Bootstrap CSS. Learned modern development practices."
   }
 ]
 
@@ -49,17 +49,17 @@ const education = [
 ]
 
 const achievements = [
-  "Best Developer Award 2023",
-  "Open Source Contributor of the Year",
-  "Speaker at Tech Conference 2023",
-  "Mentored 15+ Junior Developers",
-  "Published 20+ Technical Articles"
+  "Laravel Certified Developer",
+  "PHP Specialist Certification",
+  "React Native Mobile App Developer",
+  "REST API Architecture Expert",
+  "Full Stack JavaScript Developer"
 ]
 
 export default function AboutSection() {
   return (
     <section className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 sm:px-8">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ export default function AboutSection() {
             <Card className="h-full">
               <CardHeader className="text-center">
                 <Avatar className="w-24 h-24 mx-auto mb-4 border-4 border-primary/20">
-                  <AvatarImage src="/placeholder-avatar.jpg" alt="Profile" />
+                  <AvatarImage src="/original-blue-circle.png" alt="Profile" />
                   <AvatarFallback className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 text-primary-foreground">
                     NA
                   </AvatarFallback>
@@ -113,7 +113,7 @@ export default function AboutSection() {
                 <div className="pt-4">
                   <h4 className="font-semibold mb-3">Interests</h4>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {["Web Development", "AI/ML", "Open Source", "Photography", "Travel", "Music"].map((interest) => (
+                    {["PHP Development", "JavaScript Frameworks", "Mobile Development", "API Design", "Open Source", "Tech Blogging"].map((interest) => (
                       <Badge key={interest} variant="secondary" className="text-xs px-2 py-1">
                         {interest}
                       </Badge>
@@ -138,11 +138,11 @@ export default function AboutSection() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                  Hello! I'm John, a passionate full-stack developer with over 5 years of experience creating digital experiences that make a difference. My journey started with a curiosity about how websites work, and it has evolved into a career focused on building scalable, user-friendly applications.
+                  Hello! I'm Nova, a passionate full-stack developer with expertise in both PHP and JavaScript ecosystems. I specialize in building modern web applications using Laravel, Codeigniter, Node.js, and React Native. My journey started with PHP web development and expanded to include modern JavaScript frameworks and cross-platform mobile development.
                 </p>
 
                 <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                  I specialize in modern JavaScript frameworks, cloud technologies, and creating intuitive user interfaces. I believe in writing clean, maintainable code and staying up-to-date with the latest industry trends and best practices.
+                  I have strong expertise in REST API development, PHP frameworks including Laravel and Codeigniter, and mobile development with React Native and Expo. I'm also experienced with Filament PHP for building admin panels and Bootstrap CSS for responsive design. I believe in writing clean, maintainable code and staying up-to-date with the latest industry trends.
                 </p>
 
                 <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
@@ -168,7 +168,7 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
-        {/* Experience Timeline */}
+        {/* Education Timeline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -176,15 +176,15 @@ export default function AboutSection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h3 className="text-xl lg:text-2xl font-semibold mb-6 lg:mb-8 text-center">Experience Timeline</h3>
+          <h3 className="text-xl lg:text-2xl font-semibold mb-6 lg:mb-8 text-center">Education Timeline</h3>
           <div className="relative">
             {/* Timeline line */}
             <div className="absolute left-4 sm:left-1/2 transform -translate-x-0.5 w-0.5 bg-border h-full"></div>
 
             <div className="space-y-6 lg:space-y-8">
-              {timeline.map((item, index) => (
+              {education.map((item, index) => (
                 <motion.div
-                  key={item.title}
+                  key={item.degree}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -195,11 +195,11 @@ export default function AboutSection() {
                     <Card className="h-full">
                       <CardHeader>
                         <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground mb-2">
-                          <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" />
+                          <GraduationCap className="w-3 h-3 sm:w-4 sm:h-4" />
                           {item.year}
                         </div>
-                        <CardTitle className="text-base lg:text-lg">{item.title}</CardTitle>
-                        <p className="text-sm font-medium text-primary">{item.company}</p>
+                        <CardTitle className="text-base lg:text-lg">{item.degree}</CardTitle>
+                        <p className="text-sm font-medium text-primary">{item.institution}</p>
                       </CardHeader>
                       <CardContent>
                         <p className="text-muted-foreground text-xs sm:text-sm">{item.description}</p>
@@ -216,18 +216,18 @@ export default function AboutSection() {
           </div>
         </motion.div>
 
-        {/* Education */}
+        {/* Experience */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-semibold mb-8 text-center">Education</h3>
+          <h3 className="text-2xl font-semibold mb-8 text-center">Work Experience</h3>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {education.map((edu, index) => (
+            {timeline.map((exp, index) => (
               <motion.div
-                key={edu.degree}
+                key={exp.title}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -236,14 +236,14 @@ export default function AboutSection() {
                 <Card className="h-full">
                   <CardHeader>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                      <GraduationCap className="w-4 h-4" />
-                      {edu.year}
+                      <Briefcase className="w-4 h-4" />
+                      {exp.year}
                     </div>
-                    <CardTitle className="text-lg">{edu.degree}</CardTitle>
-                    <p className="text-sm font-medium text-primary">{edu.institution}</p>
+                    <CardTitle className="text-lg">{exp.title}</CardTitle>
+                    <p className="text-sm font-medium text-primary">{exp.company}</p>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground text-sm">{edu.description}</p>
+                    <p className="text-muted-foreground text-sm">{exp.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
