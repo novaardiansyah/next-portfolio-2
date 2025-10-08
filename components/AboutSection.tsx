@@ -61,7 +61,7 @@ export default function AboutSection() {
               About Nova
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto px-3 sm:px-0">
             Discover the story behind the code and the passion driving innovation
           </p>
         </motion.div>
@@ -251,7 +251,7 @@ export default function AboutSection() {
             </motion.div>
           </div>
 
-          <div className="w-full px-0">
+          <div className="w-full">
             {timeline.map((exp, index) => (
               <motion.div
                 key={exp.title}
