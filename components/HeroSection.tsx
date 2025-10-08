@@ -45,7 +45,7 @@ export default function HeroSection() {
   ]
 
   return (
-    <section className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-hidden overflow-x-hidden py-16 sm:pt-20 mb-16 lg:mb-24">
+    <section className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-x-hidden py-16 sm:pt-20 mt-10">
       {/* Mouse-following gradient orb */}
       <motion.div
         className="absolute w-[600px] h-[600px] rounded-full bg-gradient-to-r from-primary/10 via-primary/5 to-transparent blur-3xl pointer-events-none"

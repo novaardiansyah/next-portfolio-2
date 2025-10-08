@@ -131,7 +131,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="my-16 lg:my-24 bg-background mb-16 lg:mb-24 overflow-x-hidden">
+    <section id="contact" className="my-16 lg:my-24 bg-background overflow-x-hidden">
       <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16">
         <motion.div
           className="text-center mb-16"
@@ -365,12 +365,12 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-16"
+          className="mt-8 lg:mt-16"
         >
           <div className="relative group">
-            <div className="relative bg-background/95 backdrop-blur-xl rounded-2xl border border-border/50 p-6 lg:p-8 shadow-lg">
-              <div className="text-center mb-8">
-                <div className="inline-flex items-center justify-center w-14 h-14 lg:w-16 lg:h-16 bg-primary rounded-full mb-4 shadow-lg">
+            <div className="relative bg-background/95 backdrop-blur-xl rounded-2xl border border-border/50 px-4 lg:px-8 shadow-md lg:shadow-lg mb-4 py-8 lg:py-6">
+              <div className="text-center mb-4 lg:mb-8">
+                <div className="inline-flex items-center justify-center w-12 h-12 lg:w-16 lg:h-16 bg-primary rounded-full mb-4 shadow-md">
                   <svg className="w-6 h-6 lg:w-8 lg:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -381,12 +381,12 @@ export default function ContactSection() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 overflow-x-hidden">
+              <div className="grid grid-cols-3 sm:grid-cols-3 gap-4 lg:gap-6 overflow-x-hidden">
                 <div className="text-center">
                   <div className="inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-12 rounded-full bg-primary/10 mb-3 group-hover:bg-primary/20 transition-colors">
                     <div className="text-2xl lg:text-3xl">📧</div>
                   </div>
-                  <h4 className="text-sm lg:text-base font-semibold mb-1">Response Time</h4>
+                  <h4 className="text-sm lg:text-base font-semibold mb-1">Response <span className="hidden sm:inline">Time</span></h4>
                   <p className="text-xs lg:text-sm text-muted-foreground">&lt;24 hours</p>
                 </div>
                 <div className="text-center">
@@ -405,8 +405,8 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <div className="text-center mt-6 lg:mt-8">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white gap-2 shadow-lg hover:shadow-xl transition-all duration-300" asChild>
+              <div className="text-center mt-4 lg:mt-8">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white gap-2 shadow-md hover:shadow-lg transition-all duration-300" asChild>
                   <a href={CONTACT_INFO.phone.link}>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
