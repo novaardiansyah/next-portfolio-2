@@ -251,7 +251,7 @@ export default function AboutSection() {
             </motion.div>
           </div>
 
-          <div className="max-w-6xl mx-auto px-4">
+          <div className="w-full px-0">
             {timeline.map((exp, index) => (
               <motion.div
                 key={exp.title}
@@ -266,7 +266,7 @@ export default function AboutSection() {
                   {/* Animated gradient border */}
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 via-blue-500/20 to-purple-600/20 rounded-3xl blur-lg opacity-75 group-hover:opacity-100 transition duration-1000"></div>
 
-                  <div className="relative bg-background/95 backdrop-blur-xl rounded-2xl border border-border/50 p-8 md:p-12">
+                  <div className="relative bg-background/95 backdrop-blur-xl rounded-2xl border border-border/50 p-8 md:p-12 lg:p-16 xl:p-20">
                     {/* Header with modern layout */}
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
                       <div className="flex items-center gap-6 mb-6 lg:mb-0">
@@ -298,13 +298,13 @@ export default function AboutSection() {
                     </div>
 
                     {/* Modern content layout */}
-                    <div className="grid lg:grid-cols-2 gap-8">
+                    <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
                       {/* Responsibilities */}
                       <div>
-                        <h5 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wider">
+                        <h5 className="text-sm font-semibold text-muted-foreground mb-6 uppercase tracking-wider">
                           Key Responsibilities
                         </h5>
-                        <div className="space-y-4">
+                        <div className="space-y-4 lg:space-y-5">
                           {[
                             { icon: "💻", text: "Full-stack web application development" },
                             { icon: "🔧", text: "Backend logic & API architecture design" },
@@ -318,10 +318,10 @@ export default function AboutSection() {
                               whileInView={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.5, delay: 0.8 + idx * 0.1 }}
                               viewport={{ once: true }}
-                              className="flex items-center gap-3 p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors"
+                              className="flex items-center gap-3 p-3 lg:p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors"
                             >
                               <span className="text-lg">{item.icon}</span>
-                              <span className="text-sm font-medium">{item.text}</span>
+                              <span className="text-sm lg:text-base font-medium">{item.text}</span>
                             </motion.div>
                           ))}
                         </div>
@@ -329,16 +329,16 @@ export default function AboutSection() {
 
                       {/* Tech Stack & Impact */}
                       <div>
-                        <h5 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wider">
+                        <h5 className="text-sm font-semibold text-muted-foreground mb-6 uppercase tracking-wider">
                           Tech Stack & Impact
                         </h5>
 
                         {/* Tech stack grid */}
-                        <div className="grid grid-cols-2 gap-2 mb-6">
+                        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-3 mb-6">
                           {["PHP", "Codeigniter", "API Design", "Database", "Team Lead", "Architecture"].map((tech) => (
                             <div
                               key={tech}
-                              className="px-3 py-2 rounded-lg bg-gradient-to-r from-primary/5 to-blue-500/5 border border-primary/10 text-sm font-medium text-center hover:from-primary/10 hover:to-blue-500/10 transition-all duration-300"
+                              className="px-3 py-2 lg:px-4 lg:py-3 rounded-lg bg-gradient-to-r from-primary/5 to-blue-500/5 border border-primary/10 text-sm font-medium text-center hover:from-primary/10 hover:to-blue-500/10 transition-all duration-300"
                             >
                               {tech}
                             </div>
