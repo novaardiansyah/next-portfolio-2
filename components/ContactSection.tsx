@@ -71,11 +71,6 @@ const services = [
     technologies: ["React", "Next.js", "Node.js", "TypeScript"]
   },
   {
-    title: "UI/UX Design",
-    description: "Beautiful and intuitive user interfaces",
-    technologies: ["Figma", "Tailwind CSS", "Adobe XD", "Framer Motion"]
-  },
-  {
     title: "Mobile Development",
     description: "Cross-platform mobile applications",
     technologies: ["React Native", "Flutter", "Expo"]
@@ -96,7 +91,7 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-20 lg:py-24 bg-background">
-      <div className="container mx-auto px-6 sm:px-8">
+      <div className="container mx-auto px-8 sm:px-12 lg:px-16">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -243,7 +238,7 @@ export default function ContactSection() {
           viewport={{ once: true }}
         >
           <h3 className="text-2xl lg:text-3xl font-bold text-center mb-12">What I Can Help With</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -286,48 +281,56 @@ export default function ContactSection() {
           viewport={{ once: true }}
           className="mt-16"
         >
-          <Card className="bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 border-primary/20 shadow-lg">
-            <CardContent className="p-6 lg:p-8">
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-primary to-primary/60 rounded-full mb-4">
+          <div className="relative group">
+            <div className="relative bg-background/95 backdrop-blur-xl rounded-2xl border border-border/50 p-6 lg:p-8 shadow-lg">
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center justify-center w-14 h-14 lg:w-16 lg:h-16 bg-primary rounded-full mb-4 shadow-lg">
                   <svg className="w-6 h-6 lg:w-8 lg:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <h3 className="text-xl lg:text-2xl font-bold mb-2">Quick Response Guaranteed</h3>
                 <p className="text-sm lg:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                  I typically respond to all inquiries within 24 hours. For urgent projects, feel free to call me directly.
+                  I typically respond to all inquiries within 24 hours. For urgent projects, <br />feel free to call me directly.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 lg:gap-4">
-                <div className="flex flex-col items-center p-3 lg:p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
-                  <div className="text-2xl lg:text-3xl mb-2">📧</div>
-                  <p className="text-xs lg:text-sm font-medium text-center">Response Time</p>
-                  <p className="text-sm lg:text-base font-semibold text-primary">&lt;24 hours</p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+                <div className="text-center">
+                  <div className="inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-12 rounded-full bg-primary/10 mb-3 group-hover:bg-primary/20 transition-colors">
+                    <div className="text-2xl lg:text-3xl">📧</div>
+                  </div>
+                  <h4 className="text-sm lg:text-base font-semibold mb-1">Response Time</h4>
+                  <p className="text-xs lg:text-sm text-muted-foreground">&lt;24 hours</p>
                 </div>
-                <div className="flex flex-col items-center p-3 lg:p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
-                  <div className="text-2xl lg:text-3xl mb-2">🌍</div>
-                  <p className="text-xs lg:text-sm font-medium text-center">Availability</p>
-                  <p className="text-sm lg:text-base font-semibold text-primary">Worldwide</p>
+                <div className="text-center">
+                  <div className="inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-12 rounded-full bg-primary/10 mb-3 group-hover:bg-primary/20 transition-colors">
+                    <div className="text-2xl lg:text-3xl">🌍</div>
+                  </div>
+                  <h4 className="text-sm lg:text-base font-semibold mb-1">Availability</h4>
+                  <p className="text-xs lg:text-sm text-muted-foreground">Worldwide</p>
                 </div>
-                <div className="flex flex-col items-center p-3 lg:p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
-                  <div className="text-2xl lg:text-3xl mb-2">💬</div>
-                  <p className="text-xs lg:text-sm font-medium text-center">Consultation</p>
-                  <p className="text-sm lg:text-base font-semibold text-primary">Free</p>
+                <div className="text-center">
+                  <div className="inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-12 rounded-full bg-primary/10 mb-3 group-hover:bg-primary/20 transition-colors">
+                    <div className="text-2xl lg:text-3xl">💬</div>
+                  </div>
+                  <h4 className="text-sm lg:text-base font-semibold mb-1">Consultation</h4>
+                  <p className="text-xs lg:text-sm text-muted-foreground">Free</p>
                 </div>
               </div>
 
-              <div className="text-center mt-4 lg:mt-6">
-                <Button variant="outline" size="lg" className="gap-2 border-primary/30 hover:bg-primary/10">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  Send Urgent Message
+              <div className="text-center mt-6 lg:mt-8">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white gap-2 shadow-lg hover:shadow-xl transition-all duration-300" asChild>
+                  <a href={CONTACT_INFO.phone.link}>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    Send Urgent Message
+                  </a>
                 </Button>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

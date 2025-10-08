@@ -48,7 +48,7 @@ const achievements = [
 export default function AboutSection() {
   return (
     <section className="py-20 lg:py-24 bg-muted/30">
-      <div className="container mx-auto px-6 sm:px-8">
+      <div className="container mx-auto px-8 sm:px-12 lg:px-16">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -233,7 +233,7 @@ export default function AboutSection() {
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="text-center mb-16">
+          <div className="text-center my-20 lg:my-24">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
