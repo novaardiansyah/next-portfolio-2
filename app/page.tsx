@@ -14,10 +14,10 @@ const socialLinks = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <Header />
 
-      <main>
+      <main className="overflow-x-hidden">
         <section id="home">
           <HeroSection />
         </section>
@@ -41,7 +41,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-background border-t border-border">
-        <div className="container mx-auto px-8 sm:px-12 lg:px-16 py-8">
+        <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-center md:text-left mb-4 md:mb-0">
               <p className="text-muted-foreground">

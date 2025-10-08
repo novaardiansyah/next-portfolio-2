@@ -78,8 +78,8 @@ export default function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16 overflow-hidden">
+        <div className="flex items-center justify-between h-16 min-w-0">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -90,7 +90,7 @@ export default function Header() {
             <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/60 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">NA</span>
             </div>
-            <span className="font-bold text-xl">Nova Ardiansyah</span>
+            <span className="font-bold text-xl truncate whitespace-nowrap">Nova Ardiansyah</span>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -149,17 +149,20 @@ export default function Header() {
                   <Menu className="w-5 h-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[280px] sm:w-[320px]">
-                <div className="flex flex-col gap-6 mt-6">
+              <SheetContent side="right" className="w-[280px] sm:w-[320px] overflow-hidden">
+                <div className="flex flex-col h-full mt-8 overflow-y-auto">
                   {/* Mobile Navigation */}
-                  <nav className="flex flex-col gap-2">
+                  <nav className="flex flex-col gap-1 mb-8">
                     {navItems.map((item) => (
                       <button
                         key={item.name}
-                        onClick={() => scrollToSection(item.href)}
-                        className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+                        onClick={() => {
+                          scrollToSection(item.href)
+                          setIsOpen(false)
+                        }}
+                        className={`flex items-center gap-3 px-4 py-4 rounded-xl transition-all duration-200 ${
                           activeSection === item.href.substring(1)
-                            ? "text-primary bg-primary/10"
+                            ? "text-primary bg-primary/10 border border-primary/20"
                             : "text-muted-foreground hover:text-foreground hover:bg-accent"
                         }`}
                       >
@@ -171,31 +174,39 @@ export default function Header() {
 
                   {/* Mobile Contact Button */}
                   <Button
-                    onClick={() => scrollToSection("#contact")}
+                    onClick={() => {
+                      scrollToSection("#contact")
+                      setIsOpen(false)
+                    }}
                     size="lg"
-                    className="w-full mt-4"
+                    className="w-full"
                   >
                     <Mail className="w-4 h-4 mr-2" />
                     Contact Me
                   </Button>
 
                   {/* Mobile Social Links */}
-                  <div className="flex gap-3 justify-center pt-4 border-t">
-                    {socialLinks.map((social) => {
-                      const Icon = social.icon
-                      return (
-                        <a
-                          key={social.label}
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center rounded-full w-10 h-10 bg-muted hover:bg-muted/80 transition-colors"
-                          aria-label={social.label}
-                        >
-                          <Icon className="w-5 h-5" />
-                        </a>
-                      )
-                    })}
+                  <div className="mt-8">
+                    <div className="text-center mb-4">
+                      <p className="text-sm text-muted-foreground">Connect with me</p>
+                    </div>
+                    <div className="flex gap-3 justify-center">
+                      {socialLinks.map((social) => {
+                        const Icon = social.icon
+                        return (
+                          <a
+                            key={social.label}
+                            href={social.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center rounded-full w-12 h-12 bg-primary/10 hover:bg-primary/20 transition-colors"
+                            aria-label={social.label}
+                          >
+                            <Icon className="w-5 h-5" />
+                          </a>
+                        )
+                      })}
+                    </div>
                   </div>
                 </div>
               </SheetContent>

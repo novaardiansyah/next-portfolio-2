@@ -131,8 +131,8 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-20 lg:py-24 bg-background">
-      <div className="container mx-auto px-8 sm:px-12 lg:px-16">
+    <section id="contact" className="my-16 lg:my-24 bg-background mb-16 lg:mb-24 overflow-x-hidden">
+      <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -150,16 +150,16 @@ export default function ContactSection() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-20">
+        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-20 overflow-x-hidden">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 order-2 lg:order-1"
+            className="lg:col-span-2 order-2 lg:order-1 min-w-0"
           >
-            <Card className="h-full">
+            <Card className="h-full overflow-hidden">
               <CardHeader>
                 <CardTitle className="text-xl lg:text-2xl">Send me a message</CardTitle>
                 <CardDescription className="text-sm lg:text-base">
@@ -168,7 +168,7 @@ export default function ContactSection() {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid md:grid-cols-2 gap-4 overflow-x-hidden">
                     <div>
                       <Label htmlFor="name" className="text-sm">Name *</Label>
                       <Input id="name" name="name" placeholder="Your name" className="text-sm" onChange={handleChange} defaultValue={formData.name} />
@@ -255,9 +255,9 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-4 lg:space-y-6 order-1 lg:order-2"
+            className="space-y-4 lg:space-y-6 order-1 lg:order-2 min-w-0"
           >
-            <Card>
+            <Card className="overflow-hidden">
               <CardHeader>
                 <CardTitle className="text-lg lg:text-xl">Contact Information</CardTitle>
               </CardHeader>
@@ -285,7 +285,7 @@ export default function ContactSection() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="overflow-hidden">
               <CardHeader>
                 <CardTitle className="text-lg lg:text-xl">Follow Me</CardTitle>
               </CardHeader>
@@ -324,7 +324,7 @@ export default function ContactSection() {
           viewport={{ once: true }}
         >
           <h3 className="text-2xl lg:text-3xl font-bold text-center mb-12">What I Can Help With</h3>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 overflow-x-hidden">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -333,7 +333,7 @@ export default function ContactSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full text-center hover:shadow-md transition-shadow">
+                <Card className="h-full text-center hover:shadow-md transition-shadow overflow-hidden">
                   <CardContent className="p-6">
                     <div className="text-4xl mb-4">
                       {service.title === "Web Development" && "💻"}
@@ -381,7 +381,7 @@ export default function ContactSection() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 overflow-x-hidden">
                 <div className="text-center">
                   <div className="inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-12 rounded-full bg-primary/10 mb-3 group-hover:bg-primary/20 transition-colors">
                     <div className="text-2xl lg:text-3xl">📧</div>

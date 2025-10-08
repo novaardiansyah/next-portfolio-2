@@ -45,7 +45,7 @@ export default function HeroSection() {
   ]
 
   return (
-    <section className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-hidden pt-10 sm:pt-14">
+    <section className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-hidden overflow-x-hidden py-16 sm:pt-20 mb-16 lg:mb-24">
       {/* Mouse-following gradient orb */}
       <motion.div
         className="absolute w-[600px] h-[600px] rounded-full bg-gradient-to-r from-primary/10 via-primary/5 to-transparent blur-3xl pointer-events-none"
@@ -69,8 +69,8 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMCAwaDQwdjQwSDB6Ii8+PC9nPjwvc3ZnPg==')] bg-[length:40px_40px]" />
       </div>
 
-      <div className="container mx-auto px-8 sm:px-12 lg:px-16 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16 relative z-10 overflow-hidden">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 min-w-0">
           {/* Left Content */}
           <motion.div
             className="flex-1 text-center lg:text-left w-full"
@@ -86,7 +86,7 @@ export default function HeroSection() {
                 </AvatarFallback>
               </Avatar>
               <div className="text-center sm:text-left">
-                <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent break-words">
                   Nova Ardiansyah
                 </h1>
                 <p className="text-lg sm:text-xl text-muted-foreground mt-1 sm:mt-2">
@@ -101,7 +101,7 @@ export default function HeroSection() {
             </p>
 
             {/* Skills */}
-            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-8 justify-center lg:justify-start">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-8 justify-center lg:justify-start min-w-0">
               {skills.map((skill, index) => (
                 <motion.div
                   key={skill}
@@ -157,7 +157,7 @@ export default function HeroSection() {
 
           {/* Right Content - Code Preview */}
           <motion.div
-            className="flex-1 w-full max-w-md mx-auto lg:mx-0"
+            className="flex-1 w-full max-w-md mx-auto lg:mx-0 min-w-0"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -277,29 +277,20 @@ export default function HeroSection() {
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                       <span>Ready</span>
                     </div>
-                    <div className="flex items-center gap-1">
+                    <div className="hidden sm:flex items-center gap-1">
                       <span>PHP 8.3</span>
                     </div>
-                    <div className="flex items-center gap-1">
+                    <div className="hidden sm:flex items-center gap-1">
                       <span>Laravel 12</span>
                     </div>
                   </div>
                   <div className="text-xs text-slate-400">
-                    Laravel simple API route to get users
+                    Laravel simple API
                   </div>
                 </div>
             </Card>
           </motion.div>
         </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <ChevronDown className="w-6 h-6 text-muted-foreground" />
-        </motion.div>
       </div>
     </section>
   )

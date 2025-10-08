@@ -47,8 +47,8 @@ const achievements = [
 
 export default function AboutSection() {
   return (
-    <section className="py-20 lg:py-24 bg-muted/30">
-      <div className="container mx-auto px-8 sm:px-12 lg:px-16">
+    <section className="my-16 lg:my-24 bg-muted/30 sm:pt-16 overflow-x-hidden">
+      <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}

@@ -92,8 +92,8 @@ export default function SkillsSection() {
     setShuffledTools(shuffleArray(tools))
   }, [])
   return (
-    <section className="my-20 lg:my-24 bg-background">
-      <div className="container mx-auto px-8 sm:px-12 lg:px-16 mb-8">
+    <section className="my-16 lg:my-24 bg-background overflow-x-hidden">
+      <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16 mb-8">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
