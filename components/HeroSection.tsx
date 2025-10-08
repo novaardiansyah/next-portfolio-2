@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -10,8 +10,63 @@ import { SOCIAL_LINKS } from "@/constants/contact"
 import { motion } from "framer-motion"
 
 export default function HeroSection() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [orbPosition, setOrbPosition] = useState({ x: 0, y: 0 })
+  const sectionRef = useRef<HTMLDivElement>(null)
   const [codeAnimationKey, setCodeAnimationKey] = useState(0)
+
+  // Initialize orb position and handle mouse tracking
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    // Function to set orb to bottom right corner
+    const setBottomRightPosition = () => {
+      const rect = section.getBoundingClientRect()
+      setOrbPosition({
+        x: rect.width - 60,
+        y: rect.height - 60
+      })
+    }
+
+    // Set initial position to bottom right
+    setBottomRightPosition()
+
+    // Handle window resize
+    const handleResize = () => {
+      setBottomRightPosition()
+    }
+
+    // Handle mouse movement
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = section.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+
+      // Keep orb within section bounds with some padding
+      const padding = 30
+      const boundedX = Math.max(padding, Math.min(rect.width - padding, x))
+      const boundedY = Math.max(padding, Math.min(rect.height - padding, y))
+
+      setOrbPosition({ x: boundedX, y: boundedY })
+    }
+
+    // Handle mouse leave - return to bottom right
+    const handleMouseLeave = () => {
+      setBottomRightPosition()
+    }
+
+    // Add event listeners
+    window.addEventListener('resize', handleResize)
+    section.addEventListener('mousemove', handleMouseMove)
+    section.addEventListener('mouseleave', handleMouseLeave)
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      section.removeEventListener('mousemove', handleMouseMove)
+      section.removeEventListener('mouseleave', handleMouseLeave)
+    }
+  }, [])
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact')
@@ -20,15 +75,7 @@ export default function HeroSection() {
     }
   }
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
-
+  
   // Reset animation every 8 seconds
   useEffect(() => {
     const interval = setInterval(() => {
@@ -45,24 +92,33 @@ export default function HeroSection() {
   ]
 
   return (
-    <section className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-y-hidden overflow-x-hidden py-16 sm:pt-20 mt-10">
-      {/* Mouse-following gradient orb */}
-      <motion.div
-        className="absolute w-[600px] h-[600px] rounded-full bg-gradient-to-r from-primary/10 via-primary/5 to-transparent blur-3xl pointer-events-none"
-        animate={{
-          x: mousePosition.x - 300,
-          y: mousePosition.y - 300,
-        }}
-        transition={{
-          type: "tween",
-          ease: "easeOut",
-          duration: 0.3,
-        }}
-      />
+    <section
+      ref={sectionRef}
+      className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-y-hidden overflow-x-hidden py-16 sm:pt-20 mt-10"
+    >
 
       {/* Static gradient accents */}
       <div className="absolute top-20 left-10 w-[300px] h-[300px] rounded-full bg-gradient-to-br from-primary/5 to-transparent blur-2xl pointer-events-none" />
       <div className="absolute bottom-20 right-10 w-[400px] h-[400px] rounded-full bg-gradient-to-tl from-primary/5 to-transparent blur-2xl pointer-events-none" />
+
+      {/* Animated gradient orb that follows mouse */}
+      <motion.div
+        className="absolute w-[200px] h-[200px] rounded-full bg-gradient-to-br from-primary/20 via-blue-500/20 to-purple-600/20 blur-3xl pointer-events-none z-10"
+        style={{
+          left: orbPosition.x - 100,
+          top: orbPosition.y - 100,
+        }}
+        animate={{
+          left: orbPosition.x - 100,
+          top: orbPosition.y - 100,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+          mass: 1,
+        }}
+      />
 
       {/* Animated grid pattern */}
       <div className="absolute inset-0 opacity-20">
