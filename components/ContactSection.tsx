@@ -210,7 +210,7 @@ export default function ContactSection() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full gap-2 text-sm lg:text-base cursor-pointer"
+                    className="w-full gap-2 text-sm lg:text-base cursor-pointer bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 hover:from-gray-900 hover:via-gray-800 hover:to-gray-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 dark:from-gray-200 dark:via-gray-300 dark:to-gray-400 dark:hover:from-gray-100 dark:hover:via-gray-200 dark:hover:to-gray-300 dark:text-gray-900"
                     disabled={loading}
                   >
                     {loading ? (
@@ -367,14 +367,13 @@ export default function ContactSection() {
           viewport={{ once: true }}
           className="mt-8 lg:mt-16"
         >
-          <div className="relative group">
-            <div className="relative bg-background/95 backdrop-blur-xl rounded-2xl border border-border/50 px-4 lg:px-8 shadow-md lg:shadow-lg mb-4 py-8 lg:py-6">
-              <div className="text-center mb-4 lg:mb-8">
-                <div className="inline-flex items-center justify-center w-12 h-12 lg:w-16 lg:h-16 bg-primary rounded-full mb-4 shadow-md">
-                  <svg className="w-6 h-6 lg:w-8 lg:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
+          <Card className="relative group px-6 lg:px-0 py-8 lg:py-12">
+            <div className="text-center mb-4 lg:mb-8">
+              <div className="inline-flex items-center justify-center w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-400 rounded-full mb-4 shadow-lg ring-4 ring-gray-400/20 dark:from-gray-700 dark:via-gray-600 dark:to-gray-500 dark:ring-gray-400/20">
+                <svg className="w-6 h-6 lg:w-8 lg:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
                 <h3 className="text-xl lg:text-2xl font-bold mb-2">Quick Response Guaranteed</h3>
                 <p className="text-sm lg:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                   I typically respond to all inquiries within 24 hours. For urgent projects, <br />feel free to call me directly.
@@ -383,21 +382,21 @@ export default function ContactSection() {
 
               <div className="grid grid-cols-3 sm:grid-cols-3 gap-4 lg:gap-6 overflow-x-hidden">
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-12 rounded-full bg-primary/10 mb-3 group-hover:bg-primary/20 transition-colors">
+                    <div className="inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-12 rounded-full mb-3">
                     <div className="text-2xl lg:text-3xl">📧</div>
                   </div>
                   <h4 className="text-sm lg:text-base font-semibold mb-1">Response <span className="hidden sm:inline">Time</span></h4>
                   <p className="text-xs lg:text-sm text-muted-foreground">&lt;24 hours</p>
                 </div>
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-12 rounded-full bg-primary/10 mb-3 group-hover:bg-primary/20 transition-colors">
+                    <div className="inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-12 rounded-full mb-3">
                     <div className="text-2xl lg:text-3xl">🌍</div>
                   </div>
                   <h4 className="text-sm lg:text-base font-semibold mb-1">Availability</h4>
                   <p className="text-xs lg:text-sm text-muted-foreground">Worldwide</p>
                 </div>
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-12 rounded-full bg-primary/10 mb-3 group-hover:bg-primary/20 transition-colors">
+                    <div className="inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-12 rounded-full mb-3">
                     <div className="text-2xl lg:text-3xl">💬</div>
                   </div>
                   <h4 className="text-sm lg:text-base font-semibold mb-1">Consultation</h4>
@@ -405,18 +404,17 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <div className="text-center mt-4 lg:mt-8">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white gap-2 shadow-md hover:shadow-lg transition-all duration-300" asChild>
-                  <a href={CONTACT_INFO.phone.link}>
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    Send Urgent Message
-                  </a>
-                </Button>
-              </div>
-            </div>
+          <div className="text-center mt-4 lg:mt-8">
+            <Button size="lg" className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 hover:from-gray-900 hover:via-gray-800 hover:to-gray-700 text-white gap-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 dark:from-gray-200 dark:via-gray-300 dark:to-gray-400 dark:hover:from-gray-100 dark:hover:via-gray-200 dark:hover:to-gray-300 dark:text-gray-900" asChild>
+              <a href={CONTACT_INFO.phone.link}>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Send Urgent Message
+              </a>
+            </Button>
           </div>
+        </Card>
         </motion.div>
       </div>
     </section>

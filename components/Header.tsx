@@ -29,6 +29,19 @@ export default function Header() {
   useEffect(() => {
     setIsMounted(true)
 
+    // Check for saved theme preference or respect OS preference
+    const savedTheme = localStorage.getItem('theme')
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+    const initialTheme = savedTheme === 'dark' || (!savedTheme && prefersDark)
+    setIsDark(initialTheme)
+
+    if (initialTheme) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+
     // Set initial scroll state
     setIsScrolled(window.scrollY > 50)
 
@@ -65,6 +78,19 @@ export default function Header() {
       element.scrollIntoView({ behavior: "smooth" })
     }
     setIsOpen(false)
+  }
+
+  const toggleTheme = () => {
+    const newTheme = !isDark
+    setIsDark(newTheme)
+
+    if (newTheme) {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    }
   }
 
   return (
@@ -128,7 +154,7 @@ export default function Header() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setIsDark(!isDark)}
+              onClick={toggleTheme}
               className="rounded-full"
             >
               {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
