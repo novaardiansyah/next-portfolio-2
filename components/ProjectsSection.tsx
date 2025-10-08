@@ -73,7 +73,7 @@ export default function ProjectsSection() {
   const featuredProjects = projects.filter(project => project.featured)
 
   return (
-    <section className="my-16 lg:my-24 bg-muted/30 sm:pt-16 overflow-x-hidden">
+    <section className="mt-16 lg:my-24 bg-muted/30 sm:pt-16 overflow-x-hidden">
       <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16 mb-8">
         <motion.div
           className="text-center mb-16"

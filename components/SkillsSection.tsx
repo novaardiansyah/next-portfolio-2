@@ -92,7 +92,7 @@ export default function SkillsSection() {
     setShuffledTools(shuffleArray(tools))
   }, [])
   return (
-    <section className="my-16 lg:my-24 bg-background overflow-x-hidden">
+    <section className="lg:my-24 bg-background overflow-x-hidden">
       <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16 mb-8">
         <motion.div
           className="text-center mb-16"
@@ -174,7 +174,7 @@ export default function SkillsSection() {
           className="mb-16"
         >
           <h3 className="text-xl lg:text-2xl font-bold text-center mb-8">Tools & Technologies</h3>
-          <div className="flex flex-wrap gap-2 lg:gap-3 justify-center px-12">
+          <div className="flex flex-wrap gap-2 lg:gap-3 justify-center px-4 lg:px-12">
             {shuffledTools.map((tool, index) => (
               <motion.div
                 key={`${tool}-${index}`}

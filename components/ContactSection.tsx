@@ -131,7 +131,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="my-16 lg:my-24 bg-background overflow-x-hidden">
+    <section id="contact" className="mb-16 lg:my-24 bg-background overflow-x-hidden">
       <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16">
         <motion.div
           className="text-center mb-16"
