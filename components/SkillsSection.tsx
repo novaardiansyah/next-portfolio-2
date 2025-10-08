@@ -136,7 +136,7 @@ export default function SkillsSection() {
                 <p className="text-sm lg:text-base text-muted-foreground">{category.description}</p>
               </motion.div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 mx-0">
                 {category.skills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -145,17 +145,17 @@ export default function SkillsSection() {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
                     <Card className="h-full">
-                      <CardContent className="p-3 sm:p-4 lg:p-6">
+                      <CardContent className="p-3 sm:p-4 lg:p-5 xl:p-6">
                         <div className="flex items-center justify-between mb-2 sm:mb-3 lg:mb-4">
                           <div className="flex items-center gap-2 sm:gap-3">
-                            <span className="text-lg sm:text-xl lg:text-2xl">{skill.icon}</span>
-                            <h4 className="font-semibold text-sm sm:text-base">{skill.name}</h4>
+                            <span className="text-lg sm:text-xl lg:text-2xl xl:text-3xl">{skill.icon}</span>
+                            <h4 className="font-semibold text-sm sm:text-base lg:text-base">{skill.name}</h4>
                           </div>
-                          <span className="text-xs sm:text-sm text-muted-foreground font-medium">
+                          <span className="text-xs sm:text-sm lg:text-sm font-medium text-muted-foreground">
                             {skill.level}%
                           </span>
                         </div>
-                        <Progress value={skill.level} className="h-1.5 sm:h-2" />
+                        <Progress value={skill.level} className="h-1.5 sm:h-2 lg:h-2.5" />
                       </CardContent>
                     </Card>
                   </motion.div>

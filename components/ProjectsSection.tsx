@@ -93,7 +93,7 @@ export default function ProjectsSection() {
         </motion.div>
 
         {/* Featured Projects */}
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 mb-20">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 mb-20 w-full mx-0">
           {featuredProjects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -123,37 +123,37 @@ export default function ProjectsSection() {
                   </div>
                 </div>
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg lg:text-2xl group-hover:text-primary transition-colors line-clamp-1">
+                  <CardTitle className="text-lg lg:text-2xl xl:text-3xl group-hover:text-primary transition-colors line-clamp-1">
                     {project.title}
                   </CardTitle>
-                  <CardDescription className="text-sm lg:text-base line-clamp-2">
+                  <CardDescription className="text-sm lg:text-base xl:text-lg line-clamp-2">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <div className="flex flex-wrap gap-1 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.slice(0, 4).map((tech) => (
-                      <Badge key={tech} variant="outline" className="text-xs px-2 py-1">
+                      <Badge key={tech} variant="outline" className="text-xs px-3 py-1.5 lg:text-sm">
                         {tech}
                       </Badge>
                     ))}
                     {project.technologies.length > 4 && (
-                      <Badge variant="outline" className="text-xs px-2 py-1">
+                      <Badge variant="outline" className="text-xs px-3 py-1.5 lg:text-sm">
                         +{project.technologies.length - 4}
                       </Badge>
                     )}
                   </div>
-                  <div className="flex gap-2">
-                    <Button variant="outline" size="sm" className="gap-1 text-xs" asChild>
+                  <div className="flex gap-3">
+                    <Button variant="outline" size="sm" className="gap-1 text-xs lg:text-sm" asChild>
                       <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-3 h-3" />
+                        <Github className="w-3 h-3 lg:w-4 lg:h-4" />
                         Code
                       </a>
                     </Button>
                     {project.liveUrl && (
-                      <Button size="sm" className="gap-1 text-xs" asChild>
+                      <Button size="sm" className="gap-1 text-xs lg:text-sm" asChild>
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-3 h-3" />
+                          <ExternalLink className="w-3 h-3 lg:w-4 lg:h-4" />
                           Live Demo
                         </a>
                       </Button>

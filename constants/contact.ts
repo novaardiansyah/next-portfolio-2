@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Mail } from "lucide-react"
+import { Github, Linkedin, Mail } from "lucide-react"
 
 export const CONTACT_INFO = {
   email: {
@@ -16,9 +16,8 @@ export const CONTACT_INFO = {
 }
 
 export const SOCIAL_LINKS = [
-  { icon: Github, href: "https://github.com", label: "GitHub", target: "_blank" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn", target: "_blank" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter", target: "_blank" },
+  { icon: Github, href: "https://github.com/novaardiansyah", label: "GitHub", target: "_blank" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/novaardiansyah/", label: "LinkedIn", target: "_blank" },
   { icon: Mail, href: "mailto:admin@novaardiansyah.my.id", label: "Email", target: "_self" }
 ]
 

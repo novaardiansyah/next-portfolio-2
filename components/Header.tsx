@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { motion } from "framer-motion"
-import { Menu, X, Home, User, Briefcase, Award, Mail, Sun, Moon } from "lucide-react"
+import { Menu, X, Home, User, Briefcase, Award, Mail, Sun, Moon, Github, Linkedin } from "lucide-react"
 
 const navItems = [
   { name: "Home", href: "#home", icon: Home },
@@ -12,6 +12,11 @@ const navItems = [
   { name: "Projects", href: "#projects", icon: Briefcase },
   { name: "Skills", href: "#skills", icon: Award },
   { name: "Contact", href: "#contact", icon: Mail },
+]
+
+const socialLinks = [
+  { icon: Github, href: "https://github.com/novaardiansyah", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/novaardiansyah/", label: "LinkedIn" },
 ]
 
 export default function Header() {
@@ -176,16 +181,21 @@ export default function Header() {
 
                   {/* Mobile Social Links */}
                   <div className="flex gap-3 justify-center pt-4 border-t">
-                    {["github", "linkedin", "twitter", "instagram"].map((social) => (
-                      <Button
-                        key={social}
-                        variant="ghost"
-                        size="icon"
-                        className="rounded-full w-10 h-10"
-                      >
-                        <div className="w-5 h-5 bg-muted rounded" />
-                      </Button>
-                    ))}
+                    {socialLinks.map((social) => {
+                      const Icon = social.icon
+                      return (
+                        <a
+                          key={social.label}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center rounded-full w-10 h-10 bg-muted hover:bg-muted/80 transition-colors"
+                          aria-label={social.label}
+                        >
+                          <Icon className="w-5 h-5" />
+                        </a>
+                      )
+                    })}
                   </div>
                 </div>
               </SheetContent>

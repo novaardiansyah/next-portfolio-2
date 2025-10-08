@@ -53,16 +53,10 @@ const socialLinks = [
     color: "hover:text-blue-600"
   },
   {
-    icon: Twitter,
-    platform: "Twitter",
-    url: "https://twitter.com/novaardiansyah",
-    color: "hover:text-blue-400"
-  },
-  {
-    icon: Instagram,
-    platform: "Instagram",
-    url: "https://instagram.com/novaardiansyah",
-    color: "hover:text-pink-600"
+    icon: Mail,
+    platform: "Email",
+    url: "mailto:novaardiansyah.dev@gmail.com",
+    color: "hover:text-red-600"
   }
 ]
 

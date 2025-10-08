@@ -4,6 +4,13 @@ import AboutSection from "@/components/AboutSection"
 import ProjectsSection from "@/components/ProjectsSection"
 import SkillsSection from "@/components/SkillsSection"
 import ContactSection from "@/components/ContactSection"
+import { Github, Linkedin, Mail } from "lucide-react"
+
+const socialLinks = [
+  { icon: Github, href: "https://github.com/novaardiansyah", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/novaardiansyah/", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:novaardiansyah.dev@gmail.com", label: "Email" },
+]
 
 export default function Home() {
   return (
@@ -42,14 +49,21 @@ export default function Home() {
               </p>
             </div>
             <div className="flex gap-4">
-              {["github", "linkedin", "twitter", "instagram"].map((social) => (
-                <div
-                  key={social}
-                  className="w-8 h-8 bg-muted rounded-full flex items-center justify-center cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
-                >
-                  <div className="w-4 h-4 bg-muted-foreground/50 rounded" />
-                </div>
-              ))}
+              {socialLinks.map((social) => {
+                const Icon = social.icon
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+                    aria-label={social.label}
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                )
+              })}
             </div>
           </div>
         </div>
