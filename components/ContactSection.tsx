@@ -7,8 +7,10 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Clock, Send, Github, Linkedin, Twitter, Instagram } from "lucide-react"
-import { CONTACT_INFO, SOCIAL_LINKS } from "@/constants/contact"
+import { Mail, Phone, MapPin, Clock, Send, Github, Linkedin, Twitter, Instagram, CheckCircle, XCircle } from "lucide-react"
+import { useState } from "react"
+import { CONTACT_INFO } from "@/constants/contact"
+import Turnstile from "react-turnstile";
 
 const contactInfo = [
   {
@@ -83,10 +85,55 @@ const services = [
 ]
 
 export default function ContactSection() {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission logic here
-    alert("Thank you for your message! I'll get back to you soon.")
+  const [loading, setLoading] = useState(false)
+  const [token, setToken] = useState<string | null>(null)
+  const [captchaKey, setCaptchaKey] = useState(0)
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" })
+  const [error, setError] = useState("")
+  const [success, setSuccess] = useState("")
+  const [invalidFields, setInvalidFields] = useState<Record<string, string[]>>({})
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setInvalidFields({});
+
+    if (!token) {
+      setError("Please complete the captcha before submitting.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/contact_messages", {
+        body: JSON.stringify({ ...formData, captcha_token: token }),
+        method: "POST",
+      }).then((res) => res.json())
+
+      if (res?.errors) {
+        setInvalidFields((prev) => res.errors);
+        return;
+      }
+
+      if (res?.status == 200) {
+        setFormData({ name: "", email: "", subject: "", message: "" })
+        setSuccess(res?.message ?? "Message sent successfully");
+        return
+      } 
+      
+      throw new Error(res.message)
+    } catch (err: any) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+      setToken("")
+      setCaptchaKey((prev) => prev + 1)
+    }
   }
 
   return (
@@ -130,34 +177,79 @@ export default function ContactSection() {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="name" className="text-sm">Name *</Label>
-                      <Input id="name" placeholder="Your name" required className="text-sm" />
+                      <Input id="name" name="name" placeholder="Your name" className="text-sm" onChange={handleChange} defaultValue={formData.name} />
+                      {invalidFields?.name && <div className="text-red-600 mt-1 text-xs">{invalidFields.name[0]}</div>}
                     </div>
                     <div>
                       <Label htmlFor="email" className="text-sm">Email *</Label>
-                      <Input id="email" type="email" placeholder="your@email.com" required className="text-sm" />
+                      <Input id="email" name="email" type="email" placeholder="your@email.com" className="text-sm" onChange={handleChange} defaultValue={formData.email} />
+                      {invalidFields?.email && <div className="text-red-600 mt-1 text-xs">{invalidFields.email[0]}</div>}
                     </div>
                   </div>
 
                   <div>
                     <Label htmlFor="subject" className="text-sm">Subject *</Label>
-                    <Input id="subject" placeholder="What's this about?" required className="text-sm" />
+                    <Input id="subject" name="subject" placeholder="What's this about?" className="text-sm" onChange={handleChange} defaultValue={formData.subject} />
+                    {invalidFields?.subject && <div className="text-red-600 mt-1 text-xs">{invalidFields.subject[0]}</div>}
                   </div>
 
                   <div>
                     <Label htmlFor="message" className="text-sm">Message *</Label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Tell me about your project..."
                       rows={4}
-                      required
                       className="text-sm"
+                      onChange={handleChange}
+                      defaultValue={formData.message}
                     />
+                    {invalidFields?.message && <div className="text-red-600 mt-1 text-xs">{invalidFields.message[0]}</div>}
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full gap-2 text-sm lg:text-base">
-                    <Send className="w-4 h-4" />
-                    Send Message
+                  <Turnstile
+                    sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY as string}
+                    onVerify={(token) => setToken(token)}
+                    key={captchaKey}
+                  />
+
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full gap-2 text-sm lg:text-base cursor-pointer"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <>
+                        <Send className="w-4 h-4 animate-pulse" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Send Message
+                      </>
+                    )}
                   </Button>
+
+                  {/* Status Messages */}
+                  {success && (
+                    <div className="flex items-center gap-2 p-3 bg-green-100 dark:bg-green-900/20 border border-green-300 dark:border-green-700 rounded-lg">
+                      <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400" />
+                      <span className="text-sm text-green-800 dark:text-green-200">
+                        {success}
+                      </span>
+                    </div>
+                  )}
+
+                  {error && (
+                    <div className="flex items-center gap-2 p-3 bg-red-100 dark:bg-red-900/20 border border-red-300 dark:border-red-700 rounded-lg">
+                      <XCircle className="w-4 h-4 text-red-600 dark:text-xsd-400" />
+                      <span className="text-sm text-red-800 dark:text-red-200">
+                        {error}
+                      </span>
+                    </div>
+                  )}
                 </form>
               </CardContent>
             </Card>
