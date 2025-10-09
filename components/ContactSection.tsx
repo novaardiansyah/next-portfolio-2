@@ -168,23 +168,23 @@ export default function ContactSection() {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4 overflow-x-hidden">
+                  <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="name" className="text-sm">Name *</Label>
                       <Input id="name" name="name" placeholder="Your name" className="text-sm" onChange={handleChange} defaultValue={formData.name} />
-                      {invalidFields?.name && <div className="text-red-600 mt-1 text-xs">{invalidFields.name[0]}</div>}
+                      {invalidFields?.name && <div className="text-red-600 dark:text-red-700 mt-1 text-xs">{invalidFields.name[0]}</div>}
                     </div>
                     <div>
                       <Label htmlFor="email" className="text-sm">Email *</Label>
                       <Input id="email" name="email" type="email" placeholder="your@email.com" className="text-sm" onChange={handleChange} defaultValue={formData.email} />
-                      {invalidFields?.email && <div className="text-red-600 mt-1 text-xs">{invalidFields.email[0]}</div>}
+                      {invalidFields?.email && <div className="text-red-600 dark:text-red-700 mt-1 text-xs">{invalidFields.email[0]}</div>}
                     </div>
                   </div>
 
                   <div>
                     <Label htmlFor="subject" className="text-sm">Subject *</Label>
                     <Input id="subject" name="subject" placeholder="What's this about?" className="text-sm" onChange={handleChange} defaultValue={formData.subject} />
-                    {invalidFields?.subject && <div className="text-red-600 mt-1 text-xs">{invalidFields.subject[0]}</div>}
+                    {invalidFields?.subject && <div className="text-red-600 dark:text-red-700 mt-1 text-xs">{invalidFields.subject[0]}</div>}
                   </div>
 
                   <div>
@@ -198,7 +198,7 @@ export default function ContactSection() {
                       onChange={handleChange}
                       defaultValue={formData.message}
                     />
-                    {invalidFields?.message && <div className="text-red-600 mt-1 text-xs">{invalidFields.message[0]}</div>}
+                    {invalidFields?.message && <div className="text-red-600 dark:text-red-700 mt-1 text-xs">{invalidFields.message[0]}</div>}
                   </div>
 
                   <Turnstile
