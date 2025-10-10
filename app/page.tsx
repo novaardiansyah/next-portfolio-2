@@ -18,23 +18,23 @@ export default function Home() {
       <Header />
 
       <main className="overflow-x-hidden">
-        <section id="home">
+        <section id="home" className="min-h-screen">
           <HeroSection />
         </section>
 
-        <section id="about">
+        <section id="about" className="min-h-screen">
           <AboutSection />
         </section>
 
-        <section id="projects">
+        <section id="projects" className="min-h-screen">
           <ProjectsSection />
         </section>
 
-        <section id="skills">
+        <section id="skills" className="min-h-screen">
           <SkillsSection />
         </section>
 
-        <section id="contact">
+        <section id="contact" className="min-h-screen">
           <ContactSection />
         </section>
       </main>

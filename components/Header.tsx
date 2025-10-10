@@ -45,25 +45,63 @@ export default function Header() {
     // Set initial scroll state
     setIsScrolled(window.scrollY > 50)
 
+    // Debounced scroll handler for better performance
+    let scrollTimeout: number
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      if (scrollTimeout) {
+        cancelAnimationFrame(scrollTimeout)
+      }
 
-      // Determine active section
-      const sections = navItems.map(item => item.href.substring(1))
-      const scrollPosition = window.scrollY + 100
+      scrollTimeout = requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 50)
 
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const offsetTop = element.offsetTop
-          const offsetBottom = offsetTop + element.offsetHeight
+        // Simplified and more responsive active section detection
+        const headerHeight = 64
+        const scrollPosition = window.scrollY + headerHeight
+        const windowHeight = window.innerHeight
 
-          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-            setActiveSection(section)
-            break
+        // Simple intersection-based approach for faster response
+        let currentActiveSection = activeSection
+        let maxVisibility = 0
+
+        for (const section of navItems.map(item => item.href.substring(1))) {
+          const element = document.getElementById(section)
+          if (element) {
+            const elementTop = element.offsetTop
+            const elementBottom = elementTop + element.offsetHeight
+            const elementHeight = element.offsetHeight
+
+            // Calculate visible portion of element
+            const visibleTop = Math.max(elementTop, window.scrollY)
+            const visibleBottom = Math.min(elementBottom, window.scrollY + windowHeight)
+            const visibleHeight = Math.max(0, visibleBottom - visibleTop)
+
+            // Calculate visibility percentage
+            const visibilityPercentage = visibleHeight / elementHeight
+
+            // Bonus for sections that contain the scroll position
+            let score = visibilityPercentage
+            if (scrollPosition >= elementTop && scrollPosition <= elementBottom) {
+              score += 0.5 // 50% bonus for containing the scroll position
+            }
+
+            // Special bonus for sections near the top of viewport
+            if (elementTop <= scrollPosition && elementTop >= scrollPosition - 200) {
+              score += 0.3 // 30% bonus for being near the top
+            }
+
+            if (score > maxVisibility) {
+              maxVisibility = score
+              currentActiveSection = section
+            }
           }
         }
-      }
+
+        // Update active section if different from current
+        if (currentActiveSection !== activeSection) {
+          setActiveSection(currentActiveSection)
+        }
+      })
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -75,7 +113,20 @@ export default function Header() {
 
     const element = document.querySelector(href)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      // Calculate offset to account for fixed header height
+      const headerHeight = 64 // Approximate header height
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+      const offsetPosition = elementPosition - headerHeight
+
+      // Update active section immediately
+      const sectionName = href.substring(1)
+      setActiveSection(sectionName)
+
+      // Use smooth scrolling directly
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
     }
     setIsOpen(false)
   }

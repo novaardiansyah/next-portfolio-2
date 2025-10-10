@@ -94,7 +94,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-y-hidden overflow-x-hidden py-16 sm:pt-20 mt-10"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/50 relative overflow-y-hidden overflow-x-hidden pt-18 sm:pt-8"
     >
 
       {/* Static gradient accents */}

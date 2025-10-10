@@ -73,7 +73,7 @@ export default function ProjectsSection() {
   const featuredProjects = projects.filter(project => project.featured)
 
   return (
-    <section className="mt-16 lg:my-24 bg-muted/30 sm:pt-16 overflow-x-hidden">
+    <section className="bg-muted/30 py-16 sm:py-20 overflow-hidden min-h-screen scroll-mt-16">
       <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16 mb-8">
         <motion.div
           className="text-center mb-16"
@@ -93,7 +93,7 @@ export default function ProjectsSection() {
         </motion.div>
 
         {/* Featured Projects */}
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 mb-20 w-full mx-0">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-8 mb-0 w-full mx-0">
           {featuredProjects.map((project, index) => (
             <motion.div
               key={project.title}
