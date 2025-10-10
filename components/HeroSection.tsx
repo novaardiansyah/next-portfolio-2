@@ -71,7 +71,16 @@ export default function HeroSection() {
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact')
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' })
+      // Calculate offset to account for fixed header height (same as navbar)
+      const headerHeight = 64 // Approximate header height
+      const elementPosition = contactSection.getBoundingClientRect().top + window.pageYOffset
+      const offsetPosition = elementPosition - headerHeight
+
+      // Use smooth scrolling with offset (same as navbar implementation)
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
     }
   }
 
