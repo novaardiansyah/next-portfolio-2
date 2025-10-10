@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { motion } from "framer-motion"
@@ -25,6 +25,7 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("home")
   const [isDark, setIsDark] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     setIsMounted(true)
@@ -54,6 +55,9 @@ export default function Header() {
 
       scrollTimeout = requestAnimationFrame(() => {
         setIsScrolled(window.scrollY > 50)
+
+        // Skip active section detection during manual navigation
+        if (scrollTimeoutRef.current) return
 
         // Simplified and more responsive active section detection
         const headerHeight = 64
@@ -105,7 +109,12 @@ export default function Header() {
     }
 
     window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current)
+      }
+    }
   }, [])
 
   const scrollToSection = (href: string) => {
@@ -113,6 +122,16 @@ export default function Header() {
 
     const element = document.querySelector(href)
     if (element) {
+      // Clear any existing timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current)
+      }
+
+      // Set timeout to prevent scroll detection during navigation
+      scrollTimeoutRef.current = setTimeout(() => {
+        scrollTimeoutRef.current = null
+      }, 1500) // 1.5 seconds to cover smooth scroll duration
+
       // Calculate offset to account for fixed header height
       const headerHeight = 64 // Approximate header height
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
@@ -163,10 +182,7 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className="flex items-center gap-2 cursor-pointer"
-            onClick={() => {
-              setActiveSection("home")
-              scrollToSection("#home")
-            }}
+            onClick={() => scrollToSection("#home")}
           >
             <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/60 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">NA</span>
