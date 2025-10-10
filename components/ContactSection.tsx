@@ -131,7 +131,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="bg-background overflow-y-hidden overflow-x-hidden min-h-screen py-16 sm:py-20 scroll-mt-16">
+    <section className="bg-background overflow-y-hidden overflow-x-hidden min-h-screen pb-16 sm:pb-20 pt-10 sm:pt-14 scroll-mt-16">
       <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16">
         <motion.div
           className="text-center mb-16"

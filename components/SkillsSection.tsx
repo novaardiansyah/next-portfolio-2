@@ -92,7 +92,7 @@ export default function SkillsSection() {
     setShuffledTools(shuffleArray(tools))
   }, [])
   return (
-    <section className="bg-background overflow-hidden min-h-screen py-16 sm:py-20 scroll-mt-16">
+    <section className="bg-background overflow-hidden min-h-screen pt-16 sm:pt-20 scroll-mt-16">
       <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16 mb-8">
         <motion.div
           className="text-center mb-16"
