@@ -325,7 +325,7 @@ export default function PrivacyPolicyPage() {
 
           {/* Main Content - Single Legal Document Card */}
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 md:p-12">
-            <div className="prose prose-gray dark:prose-invert max-w-none legal-document font-serif">
+            <div className="prose prose-gray dark:prose-invert max-w-none legal-document">
 
               {/* Introduction */}
               <section className="mb-12 scroll-mt-24" id="introduction">
