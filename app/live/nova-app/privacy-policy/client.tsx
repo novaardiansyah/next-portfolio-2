@@ -290,7 +290,7 @@ export function PrivacyPolicyClient() {
               <div className="bg-white dark:bg-gray-700 rounded-full p-1 inline-flex shadow-lg">
                 <button
                   onClick={() => setLanguage('id')}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
                     language === 'id'
                       ? 'bg-blue-600 text-white shadow-md'
                       : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
@@ -300,7 +300,7 @@ export function PrivacyPolicyClient() {
                 </button>
                 <button
                   onClick={() => setLanguage('en')}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
                     language === 'en'
                       ? 'bg-blue-600 text-white shadow-md'
                       : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
