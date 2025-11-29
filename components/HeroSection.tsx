@@ -112,7 +112,7 @@ export default function HeroSection() {
 
       {/* Animated gradient orb that follows mouse */}
       <motion.div
-        className="absolute w-[200px] h-[200px] rounded-full bg-gradient-to-br from-primary/20 via-blue-500/20 to-purple-600/20 blur-3xl pointer-events-none z-10"
+        className="absolute w-[200px] h-[200px] rounded-full bg-gradient-to-br from-primary/20 via-blue-500/20 to-cyan-500/20 blur-3xl pointer-events-none z-10"
         style={{
           left: orbPosition.x - 100,
           top: orbPosition.y - 100,
@@ -266,7 +266,7 @@ export default function HeroSection() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 0.8 }}
                   >
-                    <span className="text-purple-400">&lt;?php</span>
+                    <span className="text-blue-400">&lt;?php</span>
                   </motion.div>
 
                   <motion.div
@@ -298,7 +298,7 @@ export default function HeroSection() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.7, duration: 0.8 }}
                   >
-                    <span className="text-purple-400">&nbsp;&nbsp;&nbsp;&nbsp;$users</span> <span className="text-slate-400">=</span> <span className="text-yellow-400">User</span><span className="text-slate-300">::all();</span>
+                    <span className="text-blue-400">&nbsp;&nbsp;&nbsp;&nbsp;$users</span> <span className="text-slate-400">=</span> <span className="text-yellow-400">User</span><span className="text-slate-300">::all();</span>
                   </motion.div>
 
                   <motion.div
@@ -306,7 +306,7 @@ export default function HeroSection() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 2.0, duration: 0.8 }}
                   >
-                    <span className="text-purple-400">&nbsp;&nbsp;&nbsp;&nbsp;return</span> <span className="text-yellow-400">response</span><span className="text-slate-300">()-&gt;json([</span>
+                    <span className="text-blue-400">&nbsp;&nbsp;&nbsp;&nbsp;return</span> <span className="text-yellow-400">response</span><span className="text-slate-300">()-&gt;json([</span>
                   </motion.div>
 
                   <motion.div
@@ -314,7 +314,7 @@ export default function HeroSection() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 2.3, duration: 0.8 }}
                   >
-                    <span className="text-slate-300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'users'</span> <span className="text-slate-400">=&gt;</span> <span className="text-purple-400">$users</span>
+                    <span className="text-slate-300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'users'</span> <span className="text-slate-400">=&gt;</span> <span className="text-blue-400">$users</span>
                   </motion.div>
 
                   <motion.div

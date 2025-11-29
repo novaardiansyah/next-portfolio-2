@@ -83,7 +83,7 @@ export default function ProjectsSection() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-primary via-blue-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-foreground to-foreground/50 bg-clip-text text-transparent">
               Featured Projects
             </span>
           </h2>

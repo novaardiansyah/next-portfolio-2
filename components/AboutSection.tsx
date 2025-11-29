@@ -57,7 +57,7 @@ export default function AboutSection() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-primary via-blue-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-foreground to-foreground/50 bg-clip-text text-transparent">
               About Nova
             </span>
           </h2>
@@ -179,7 +179,7 @@ export default function AboutSection() {
         >
           <div className="text-center mb-16">
             <h3 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-primary via-blue-500 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-foreground to-foreground/50 bg-clip-text text-transparent">
                 Learning Journey
               </span>
             </h3>
@@ -241,7 +241,7 @@ export default function AboutSection() {
               viewport={{ once: true }}
             >
               <h3 className="text-4xl md:text-5xl font-bold mb-4">
-                <span className="bg-gradient-to-r from-primary via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-foreground to-foreground/50 bg-clip-text text-transparent">
                   Career Journey
                 </span>
               </h3>
@@ -264,7 +264,7 @@ export default function AboutSection() {
                 {/* Modern card with glassmorphism */}
                 <div className="relative group">
                   {/* Animated gradient border */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 via-blue-500/20 to-purple-600/20 rounded-3xl blur-lg opacity-75 group-hover:opacity-100 transition duration-1000"></div>
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-foreground/10 to-foreground/5 rounded-3xl blur-lg opacity-75 group-hover:opacity-100 transition duration-1000"></div>
 
                   <div className="relative bg-background/95 backdrop-blur-xl rounded-2xl border border-border/50 p-8 md:p-12 lg:p-16 xl:p-20">
                     {/* Header with modern layout */}
@@ -272,8 +272,8 @@ export default function AboutSection() {
                       <div className="flex items-center gap-6 mb-6 lg:mb-0">
                         {/* Modern icon container */}
                         <div className="relative">
-                          <div className="absolute inset-0 bg-gradient-to-r from-primary to-blue-500 rounded-2xl blur-lg opacity-30"></div>
-                          <div className="relative bg-gradient-to-r from-primary to-blue-500 rounded-2xl p-4">
+                          <div className="absolute inset-0 bg-gradient-to-r from-foreground to-foreground/70 rounded-2xl blur-lg opacity-30"></div>
+                          <div className="relative bg-gradient-to-r from-foreground to-foreground/70 rounded-2xl p-4">
                             <Briefcase className="w-8 h-8 text-white" />
                           </div>
                         </div>
