@@ -4,12 +4,16 @@ import { apiFetch } from "@/lib/apiClient";
 export async function POST(req: NextRequest) {
   try {
     let body = await req.json();
-    body.user_agent = req.headers.get("user-agent") || "nextjs";
+    const userAgent = req.headers.get("user-agent") || "nextjs";
+    body.user_agent = userAgent;
     body.ip_address = req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "unknown";
 
     const data = await apiFetch("contact-messages", {
       method: "POST",
-      body
+      body,
+      headers: {
+        "User-Agent": userAgent
+      }
     });
     return NextResponse.json(data);
   } catch (error) {
