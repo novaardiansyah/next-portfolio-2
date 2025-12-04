@@ -32,6 +32,8 @@ jobs:
 
             nvm install 22.16.0
             nvm use 22.16.0
+            
+            npm install -g pm2
 
             npm install
             npm run build
