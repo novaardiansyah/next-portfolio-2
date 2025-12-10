@@ -24,22 +24,4 @@ jobs:
             git fetch origin
             git checkout production
             git pull origin production
-            rm -rf node_modules/.bin/next
-            rm -rf .next
-
-            export NVM_DIR="$HOME/.nvm"
-            source $NVM_DIR/nvm.sh
-
-            nvm install 22.16.0
-            nvm use 22.16.0
-            
-            npm install -g pm2
-
-            npm install
-            npm run build
-            npm prune --omit=dev
-            npm run pm2:restart || npm run pm2:start
-            pm2 startup
-            pm2 save
-
-            
+            docker compose up -d --build
