@@ -1,5 +1,5 @@
 services:
-  portfolio:
+  dev:
     build:
       context: .
       dockerfile: Dockerfile
@@ -7,22 +7,13 @@ services:
     ports:
       - "127.0.0.1:6101:3000"
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - PORT=3000
-    env_file:
-      - .env.production
+      - WATCHPACK_POLLING=true
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
     restart: unless-stopped
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "wget",
-          "--no-verbose",
-          "--tries=1",
-          "--spider",
-          "http://127.0.0.1:3000",
-        ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+    stdin_open: true
+    tty: true
