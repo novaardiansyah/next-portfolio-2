@@ -1,0 +1,34 @@
+# Dependencies
+node_modules
+
+# Next.js build output
+.next
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+
+# Environment files (will be mounted or passed separately)
+.env
+.env.local
+.env.development
+.env.development.local
+
+# Documentation
+README.md
+CODE_OF_CONDUCT.md
+LICENSE
+
+# Docker files (not needed in the image)
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Misc
+*.log
+npm-debug.log*
+.DS_Store

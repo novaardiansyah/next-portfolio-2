@@ -37,8 +37,7 @@ jobs:
 
             npm install
             npm run build
-            npm prune --production
-            
+            npm prune --omit=dev
             npm run pm2:restart || npm run pm2:start
             pm2 startup
             pm2 save
