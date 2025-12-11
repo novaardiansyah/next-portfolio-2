@@ -48,9 +48,13 @@ jobs:
             npm run build
 
             echo "--> Set permission..."
-            sudo chown -R www:www . && sudo find . \( -type d -exec chmod 755 {} \; \) -o \( -type f -exec chmod 644 {} \; \) && sudo chmod -R 775 .next node_modules public
+            chmod +x ./github/bash/fixperm.sh
+            ./github/bash/fixperm.sh
+            echo "INFO: Permission successfully set"
 
             echo "--> Run application..."
             npm run pm2:restart || npm run pm2:start
             pm2 startup
             pm2 save
+
+            echo "INFO: Deployment completed successfully"
