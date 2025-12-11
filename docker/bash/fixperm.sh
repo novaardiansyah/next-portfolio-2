@@ -13,4 +13,4 @@ sudo chmod -R 775 public .next node_modules 2>/dev/null
 # Sensitive files (abaikan error jika tidak ada)
 sudo chmod 600 .env .env.local .env.production .well-known .git 2>/dev/null
 
-sudo chmod 600 ./github/bash/fixperm.sh 2>/dev/null
+sudo chmod 600 ./docker/bash 2>/dev/null
