@@ -48,8 +48,8 @@ jobs:
             npm run build
 
             echo "--> Set permission..."
-            chmod +x ./github/bash/fixperm.sh
-            ./github/bash/fixperm.sh
+            chmod +x ./docker/bash/fixperm.sh
+            ./docker/bash/fixperm.sh
             echo "INFO: Permission successfully set"
 
             echo "--> Run application..."
