@@ -49,3 +49,4 @@ next-env.d.ts
 .vscode/*
 CLAUDE.md
 todo.md
+.agent/.docs/task.md
