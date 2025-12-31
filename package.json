@@ -7,10 +7,10 @@
     "build": "next build",
     "start": "next start -p 6105 -H 127.0.0.1",
     "lint": "eslint",
-    "pm2:start": "pm2 start npm --name 'portfolio_2' -- run start",
-    "pm2:stop": "pm2 stop portfolio_2",
-    "pm2:restart": "pm2 restart portfolio_2",
-    "pm2:delete": "pm2 delete portfolio_2"
+    "pm2:start": "pm2 start npm --name 'portfolio_3' -- run start",
+    "pm2:stop": "pm2 stop portfolio_3",
+    "pm2:restart": "pm2 restart portfolio_3",
+    "pm2:delete": "pm2 delete portfolio_3"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
