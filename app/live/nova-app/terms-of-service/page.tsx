@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'Syarat dan Ketentuan - Nova App',
       description: 'Syarat dan ketentuan untuk Nova App - Aturan penggunaan aplikasi keuangan pribadi',
       type: 'website',
-      url: 'https://novaardiansyah.my.id/live/nova-app/terms-of-service',
+      url: 'https://novaardiansyah.id/live/nova-app/terms-of-service',
     },
     twitter: {
       card: 'summary_large_image',
@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: 'Syarat dan ketentuan untuk Nova App - Aturan penggunaan aplikasi keuangan pribadi',
     },
     alternates: {
-      canonical: 'https://novaardiansyah.my.id/live/nova-app/terms-of-service',
+      canonical: 'https://novaardiansyah.id/live/nova-app/terms-of-service',
     },
   };
 }

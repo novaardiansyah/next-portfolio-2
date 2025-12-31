@@ -2,8 +2,8 @@ import { Github, Linkedin, Mail, Globe } from "lucide-react"
 
 export const CONTACT_INFO = {
   email: {
-    value: "admin@novaardiansyah.my.id",
-    link: "mailto:admin@novaardiansyah.my.id"
+    value: "admin@novaardiansyah.id",
+    link: "mailto:admin@novaardiansyah.id"
   },
   phone: {
     value: "(+62) 895 0666 8480",
@@ -18,8 +18,8 @@ export const CONTACT_INFO = {
 export const SOCIAL_LINKS = [
   { icon: Github, href: "https://github.com/novaardiansyah", label: "GitHub", target: "_blank" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/novaardiansyah/", label: "LinkedIn", target: "_blank" },
-  { icon: Mail, href: "mailto:admin@novaardiansyah.my.id", label: "Email", target: "_self" },
-  { icon: Globe, href: "https://blog.novaardiansyah.my.id?utm_source=portfolio&utm_medium=hero_section&utm_campaign=blog_link", label: "Blog", target: "_blank" }
+  { icon: Mail, href: "mailto:admin@novaardiansyah.id", label: "Email", target: "_self" },
+  { icon: Globe, href: "https://blog.novaardiansyah.id?utm_source=portfolio&utm_medium=hero_section&utm_campaign=blog_link", label: "Blog", target: "_blank" }
 ]
 
 export const PERSONAL_INFO = {

@@ -114,8 +114,8 @@ const content = {
       contact: {
         title: "Hubungi Kami",
         intro: "Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini, Anda dapat menghubungi kami:",
-        email: "privacy@novaardiansyah.my.id",
-        website: "novaardiansyah.my.id",
+        email: "privacy@novaardiansyah.id",
+        website: "novaardiansyah.id",
         phone: "+62 8950 666 8480"
       }
     },
@@ -234,8 +234,8 @@ const content = {
       contact: {
         title: "Contact Us",
         intro: "If you have any questions about this Privacy Policy, You can contact us:",
-        email: "privacy@novaardiansyah.my.id",
-        website: "novaardiansyah.my.id",
+        email: "privacy@novaardiansyah.id",
+        website: "novaardiansyah.id",
         phone: "+62 8950 666 8480"
       }
     },

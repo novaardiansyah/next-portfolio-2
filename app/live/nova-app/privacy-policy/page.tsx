@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'Kebijakan Privasi - Nova App',
       description: 'Kebijakan privasi untuk Nova App - Bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi Anda',
       type: 'website',
-      url: 'https://novaardiansyah.my.id/live/nova-app/privacy-policy',
+      url: 'https://novaardiansyah.id/live/nova-app/privacy-policy',
     },
     twitter: {
       card: 'summary_large_image',
@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: 'Kebijakan privasi untuk Nova App - Bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi Anda',
     },
     alternates: {
-      canonical: 'https://novaardiansyah.my.id/live/nova-app/privacy-policy',
+      canonical: 'https://novaardiansyah.id/live/nova-app/privacy-policy',
     },
   };
 }

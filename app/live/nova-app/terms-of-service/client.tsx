@@ -95,8 +95,8 @@ const content = {
       contact: {
         title: "Hubungi Kami",
         intro: "Jika Anda memiliki pertanyaan tentang syarat dan ketentuan ini, silakan hubungi kami:",
-        email: "terms@novaardiansyah.my.id",
-        website: "novaardiansyah.my.id",
+        email: "terms@novaardiansyah.id",
+        website: "novaardiansyah.id",
         phone: "+62 8950 666 8480"
       }
     },
@@ -196,8 +196,8 @@ const content = {
       contact: {
         title: "Contact Us",
         intro: "If you have any questions about these terms and conditions, please contact us:",
-        email: "terms@novaardiansyah.my.id",
-        website: "novaardiansyah.my.id",
+        email: "terms@novaardiansyah.id",
+        website: "novaardiansyah.id",
         phone: "+62 8950 666 8480"
       }
     },
