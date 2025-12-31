@@ -45,8 +45,7 @@ next-env.d.ts
 .env.prod
 .env.production
 
-.claude/*
-.vscode/*
+.claude/
+.vscode/
 CLAUDE.md
-todo.md
-.agent/.docs/task.md
+.agent/
