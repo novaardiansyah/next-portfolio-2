@@ -33,7 +33,8 @@ echo "--> Securing credentials files..."
 sudo chmod 600 .env .env.local .env.production .well-known .git Makefile setup.sh 2>/dev/null
 
 echo "--> Run application..."
-npm run pm2:delete || npm run pm2:start
+npm run pm2:delete || true
+npm run pm2:start
 pm2 startup
 pm2 save
 
