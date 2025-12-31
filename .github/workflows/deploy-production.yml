@@ -23,6 +23,11 @@ jobs:
             echo "[GITHUB ACTION] Start to execute..."
             cd ${{ secrets.PRODUCTION_PATH }}
 
+            echo "--> Git sync..."
+            git fetch origin
+            git checkout production
+            git pull origin production
+
             chmod +x ./setup.sh
             sed -i 's/\r$//' setup.sh && bash setup.sh
 
