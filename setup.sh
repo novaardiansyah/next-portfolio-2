@@ -12,11 +12,6 @@ source $NVM_DIR/nvm.sh
 nvm install 22.16.0
 nvm use 22.16.0
 
-echo "--> Git sync..."
-git fetch origin
-git checkout production
-git pull origin production
-
 echo "--> Clear build cache..."
 rm -rf node_modules/.bin/next
 rm -rf .next
