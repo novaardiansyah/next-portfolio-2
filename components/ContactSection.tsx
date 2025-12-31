@@ -55,7 +55,7 @@ const socialLinks = [
   {
     icon: Mail,
     platform: "Email",
-    url: "mailto:novaardiansyah.dev@gmail.com",
+    url: "mailto:admin@novaardiansyah.id",
     color: "hover:text-red-600"
   }
 ]
