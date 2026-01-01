@@ -424,7 +424,7 @@ export default function ContactSection() {
                 </div>
               </div>
 
-          <div className="text-center mt-4 lg:mt-8">
+          <div className="text-center mt-8 lg:mt-12">
             <Button size="lg" className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 hover:from-gray-900 hover:via-gray-800 hover:to-gray-700 text-white gap-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 dark:from-gray-200 dark:via-gray-300 dark:to-gray-400 dark:hover:from-gray-100 dark:hover:via-gray-200 dark:hover:to-gray-300 dark:text-gray-900" asChild>
               <a href={CONTACT_INFO.phone.link}>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -44,7 +44,7 @@ export default function Home() {
         <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-center md:text-left mb-4 md:mb-0">
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 © {new Date().getFullYear()} Nova Ardiansyah. All rights reserved.
               </p>
             </div>
