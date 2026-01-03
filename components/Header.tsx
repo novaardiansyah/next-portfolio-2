@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { motion } from "framer-motion"
+import Link from "next/link"
+import { useRouter, usePathname } from "next/navigation"
 import { Menu, X, Home, User, Briefcase, Award, Mail, Sun, Moon, Github, Linkedin } from "lucide-react"
 
 const navItems = [
@@ -25,6 +27,8 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("home")
   const [isDark, setIsDark] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
@@ -120,28 +124,28 @@ export default function Header() {
   const scrollToSection = (href: string) => {
     if (!isMounted) return
 
+    if (pathname !== "/") {
+      router.push("/" + href)
+      return
+    }
+
     const element = document.querySelector(href)
     if (element) {
-      // Clear any existing timeout
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current)
       }
 
-      // Set timeout to prevent scroll detection during navigation
       scrollTimeoutRef.current = setTimeout(() => {
         scrollTimeoutRef.current = null
-      }, 1500) // 1.5 seconds to cover smooth scroll duration
+      }, 1500)
 
-      // Calculate offset to account for fixed header height
-      const headerHeight = 64 // Approximate header height
+      const headerHeight = 64
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - headerHeight
 
-      // Update active section immediately
       const sectionName = href.substring(1)
       setActiveSection(sectionName)
 
-      // Use smooth scrolling directly
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -165,11 +169,10 @@ export default function Header() {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? "bg-background/95 backdrop-blur-md border-b border-border/50"
           : "bg-transparent"
-      }`}
+        }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
@@ -177,18 +180,19 @@ export default function Header() {
       <div className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16 overflow-hidden">
         <div className="flex items-center justify-between h-16 min-w-0">
           {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-2 cursor-pointer"
-            onClick={() => scrollToSection("#home")}
-          >
-            <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/60 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">NA</span>
-            </div>
-            <span className="font-bold text-xl truncate whitespace-nowrap">Nova Ardiansyah</span>
-          </motion.div>
+          <Link href="/">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center gap-2 cursor-pointer group"
+            >
+              <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/60 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-primary/20 transition-all">
+                <span className="text-white font-bold text-sm">NA</span>
+              </div>
+              <span className="font-bold text-xl truncate whitespace-nowrap">Nova Ardiansyah</span>
+            </motion.div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
@@ -201,11 +205,10 @@ export default function Header() {
               >
                 <button
                   onClick={() => scrollToSection(item.href)}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-md transition-all duration-200 ${
-                    activeSection === item.href.substring(1)
+                  className={`flex items-center gap-2 px-3 py-2 rounded-md transition-all duration-200 ${activeSection === item.href.substring(1)
                       ? "text-primary bg-primary/10"
                       : "text-muted-foreground hover:text-foreground hover:bg-accent"
-                  }`}
+                    }`}
                 >
                   <item.icon className="w-4 h-4" />
                   <span>{item.name}</span>
@@ -257,11 +260,10 @@ export default function Header() {
                           scrollToSection(item.href)
                           setIsOpen(false)
                         }}
-                        className={`flex items-center gap-3 px-4 py-4 rounded-xl transition-all duration-200 ${
-                          activeSection === item.href.substring(1)
+                        className={`flex items-center gap-3 px-4 py-4 rounded-xl transition-all duration-200 ${activeSection === item.href.substring(1)
                             ? "text-primary bg-primary/10 border border-primary/20"
                             : "text-muted-foreground hover:text-foreground hover:bg-accent"
-                        }`}
+                          }`}
                       >
                         <item.icon className="w-5 h-5" />
                         <span className="text-base font-medium">{item.name}</span>

@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
+import Footer from '@/components/Footer'
 import { Download, FileText, AlertCircle, Loader2, Sun, Moon, Check, Files } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -135,17 +137,19 @@ export default function FilesDownloadPage() {
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex items-center gap-2"
-            >
-              <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/60 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">NA</span>
-              </div>
-              <span className="font-bold text-lg">Nova Ardiansyah</span>
-            </motion.div>
+            <Link href="/">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex items-center gap-2 group cursor-pointer"
+              >
+                <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/60 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-primary/20 transition-all">
+                  <span className="text-white font-bold text-sm">NA</span>
+                </div>
+                <span className="font-bold text-lg">Nova Ardiansyah</span>
+              </motion.div>
+            </Link>
 
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -309,13 +313,7 @@ export default function FilesDownloadPage() {
         )}
       </main>
 
-      <footer className="border-t border-border/50 mt-auto">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="text-center text-sm text-muted-foreground">
-            <p>© {new Date().getFullYear()} Nova Ardiansyah. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
