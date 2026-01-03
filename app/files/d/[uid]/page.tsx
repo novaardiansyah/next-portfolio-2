@@ -73,8 +73,8 @@ export default function FilesDownloadPage() {
         }
 
         setFiles(data.data || [])
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred')
+      } catch {
+        setFiles([])
       } finally {
         setLoading(false)
       }
@@ -104,6 +104,11 @@ export default function FilesDownloadPage() {
   const getFileExtension = (fileName: string) => {
     const parts = fileName.split('.')
     return parts.length > 1 ? parts[parts.length - 1].toUpperCase() : 'FILE'
+  }
+
+  const getFileNameWithoutExtension = (fileName: string) => {
+    const lastDotIndex = fileName.lastIndexOf('.')
+    return lastDotIndex > 0 ? fileName.substring(0, lastDotIndex) : fileName
   }
 
   const getFileIcon = (fileName: string) => {
@@ -141,15 +146,12 @@ export default function FilesDownloadPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center gap-3"
+              className="flex items-center gap-2"
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/60 rounded-xl flex items-center justify-center shadow-lg shadow-primary/25">
-                <Files className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/60 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">NA</span>
               </div>
-              <div>
-                <h1 className="font-bold text-lg">File Downloads</h1>
-                <p className="text-xs text-muted-foreground">Secure attachment access</p>
-              </div>
+              <span className="font-bold text-lg">Nova Ardiansyah</span>
             </motion.div>
 
             <motion.div
@@ -170,7 +172,7 @@ export default function FilesDownloadPage() {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 min-h-[calc(100vh-8rem)] flex flex-col">
         {loading && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -211,9 +213,9 @@ export default function FilesDownloadPage() {
               <FileText className="w-10 h-10 text-muted-foreground" />
             </div>
             <div className="text-center">
-              <h2 className="text-xl font-semibold mb-2">No Attachments Found</h2>
+              <h2 className="text-xl font-semibold mb-2">No Files Found</h2>
               <p className="text-muted-foreground max-w-md">
-                This email doesn't have any attachments available for download.
+                There are no files available for download at this time.
               </p>
             </div>
           </motion.div>
@@ -233,58 +235,57 @@ export default function FilesDownloadPage() {
                 </span>{' '}
                 Available
               </h2>
-              <p className="text-muted-foreground">
-                Click on any file to start the download
+              <p className="text-xs text-muted-foreground/70">
+                Anyone with this link can view and download these files. <br className="hidden sm:block" />Please only share it with people you trust.
               </p>
             </motion.div>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 grid-cols-1 sm:grid-cols-3 2xl:grid-cols-4">
               {files.map((file, index) => (
                 <motion.div
                   key={file.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
                 >
-                  <Card className="group hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 border-border/50 hover:border-primary/30 overflow-hidden">
-                    <CardHeader className="pb-3">
-                      <div className="flex items-start gap-4">
-                        <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${getFileIcon(file.file_name)} flex items-center justify-center shadow-lg shrink-0`}>
-                          <span className="text-white text-xs font-bold">
+                  <Card className="group hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 border-border/50 hover:border-primary/30 overflow-hidden">
+                    <CardHeader className="p-3 pb-2">
+                      <div className="flex items-center gap-3">
+                        <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${getFileIcon(file.file_name)} flex items-center justify-center shadow-md shrink-0`}>
+                          <span className="text-white text-[10px] font-bold">
                             {getFileExtension(file.file_name)}
                           </span>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <CardTitle className="text-sm font-medium truncate mb-1">
-                            {file.file_name}
+                          <CardTitle className="text-xs font-medium mb-0.5 break-all">
+                            {getFileNameWithoutExtension(file.file_name)}
                           </CardTitle>
-                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                            <span className="px-2 py-0.5 bg-muted rounded-full">
-                              {file.code}
-                            </span>
+                          <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
+                            <span className="truncate">{file.code}</span>
                             <span>•</span>
-                            <span>{file.file_size}</span>
+                            <span className="shrink-0">{file.file_size}</span>
                           </div>
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="pt-0">
+                    <CardContent className="p-3 pt-0">
                       <Button
                         onClick={() => handleDownload(file)}
-                        className={`w-full group-hover:shadow-md transition-all duration-300 ${downloadedFiles.has(file.id)
-                            ? 'bg-green-600 hover:bg-green-700'
-                            : ''
+                        size="sm"
+                        className={`w-full text-xs group-hover:shadow-md transition-all duration-300 cursor-pointer ${downloadedFiles.has(file.id)
+                          ? 'bg-green-600 hover:bg-green-700'
+                          : ''
                           }`}
                         variant={downloadedFiles.has(file.id) ? 'default' : 'default'}
                       >
                         {downloadedFiles.has(file.id) ? (
                           <>
-                            <Check className="w-4 h-4" />
+                            <Check className="w-3 h-3" />
                             Downloaded
                           </>
                         ) : (
                           <>
-                            <Download className="w-4 h-4" />
+                            <Download className="w-3 h-3" />
                             Download
                           </>
                         )}
