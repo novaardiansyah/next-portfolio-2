@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://novaardiansyah.dev",
+    url: "https://novaardiansyah.id",
     title: "Nova Ardiansyah - Full Stack Developer Portfolio",
     description: "Passionate full-stack developer creating modern web applications with React, TypeScript, and cutting-edge technologies.",
     siteName: "Nova Ardiansyah Portfolio",
