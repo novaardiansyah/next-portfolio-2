@@ -1,0 +1,310 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { useParams } from 'next/navigation'
+import { motion } from 'framer-motion'
+import { Download, FileText, AlertCircle, Loader2, Sun, Moon, Check, Files } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+
+interface FileItem {
+  id: number
+  code: string
+  file_name: string
+  file_size: string
+  download_url: string
+}
+
+interface ApiResponse {
+  success: boolean
+  message: string
+  data: FileItem[]
+}
+
+export default function FilesDownloadPage() {
+  const params = useParams()
+  const uid = params.uid as string
+
+  const [files, setFiles] = useState<FileItem[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [isDark, setIsDark] = useState(false)
+  const [downloadedFiles, setDownloadedFiles] = useState<Set<number>>(new Set())
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme')
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const initialTheme = savedTheme === 'dark' || (!savedTheme && prefersDark)
+    setIsDark(initialTheme)
+
+    if (initialTheme) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!uid) return
+
+    const fetchFiles = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_GO_URL}/emails/${uid}/attachments`,
+          {
+            headers: {
+              'Authorization': `Bearer ${process.env.NEXT_PUBLIC_API_GO_KEY}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch attachments')
+        }
+
+        const data: ApiResponse = await response.json()
+
+        if (!data.success) {
+          throw new Error(data.message || 'Failed to fetch attachments')
+        }
+
+        setFiles(data.data || [])
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchFiles()
+  }, [uid])
+
+  const toggleTheme = () => {
+    const newTheme = !isDark
+    setIsDark(newTheme)
+
+    if (newTheme) {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    }
+  }
+
+  const handleDownload = (file: FileItem) => {
+    window.open(file.download_url, '_blank')
+    setDownloadedFiles(prev => new Set(prev).add(file.id))
+  }
+
+  const getFileExtension = (fileName: string) => {
+    const parts = fileName.split('.')
+    return parts.length > 1 ? parts[parts.length - 1].toUpperCase() : 'FILE'
+  }
+
+  const getFileIcon = (fileName: string) => {
+    const ext = fileName.split('.').pop()?.toLowerCase()
+    const colors: Record<string, string> = {
+      pdf: 'from-red-500 to-red-600',
+      doc: 'from-blue-500 to-blue-600',
+      docx: 'from-blue-500 to-blue-600',
+      xls: 'from-green-500 to-green-600',
+      xlsx: 'from-green-500 to-green-600',
+      ppt: 'from-orange-500 to-orange-600',
+      pptx: 'from-orange-500 to-orange-600',
+      zip: 'from-yellow-500 to-yellow-600',
+      rar: 'from-yellow-500 to-yellow-600',
+      jpg: 'from-purple-500 to-purple-600',
+      jpeg: 'from-purple-500 to-purple-600',
+      png: 'from-purple-500 to-purple-600',
+      gif: 'from-purple-500 to-purple-600',
+    }
+    return colors[ext || ''] || 'from-gray-500 to-gray-600'
+  }
+
+  return (
+    <div className="min-h-screen bg-background transition-colors duration-300">
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/3 rounded-full blur-3xl" />
+      </div>
+
+      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center gap-3"
+            >
+              <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/60 rounded-xl flex items-center justify-center shadow-lg shadow-primary/25">
+                <Files className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h1 className="font-bold text-lg">File Downloads</h1>
+                <p className="text-xs text-muted-foreground">Secure attachment access</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleTheme}
+                className="rounded-full hover:bg-accent"
+              >
+                {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+      </header>
+
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        {loading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex flex-col items-center justify-center min-h-[400px] gap-4"
+          >
+            <div className="relative">
+              <div className="w-16 h-16 border-4 border-primary/20 rounded-full" />
+              <Loader2 className="w-16 h-16 text-primary animate-spin absolute inset-0" />
+            </div>
+            <p className="text-muted-foreground">Loading attachments...</p>
+          </motion.div>
+        )}
+
+        {error && !loading && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-col items-center justify-center min-h-[400px] gap-4"
+          >
+            <div className="w-20 h-20 bg-destructive/10 rounded-full flex items-center justify-center">
+              <AlertCircle className="w-10 h-10 text-destructive" />
+            </div>
+            <div className="text-center">
+              <h2 className="text-xl font-semibold mb-2">Unable to Load Files</h2>
+              <p className="text-muted-foreground max-w-md">{error}</p>
+            </div>
+          </motion.div>
+        )}
+
+        {!loading && !error && files.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-col items-center justify-center min-h-[400px] gap-4"
+          >
+            <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center">
+              <FileText className="w-10 h-10 text-muted-foreground" />
+            </div>
+            <div className="text-center">
+              <h2 className="text-xl font-semibold mb-2">No Attachments Found</h2>
+              <p className="text-muted-foreground max-w-md">
+                This email doesn't have any attachments available for download.
+              </p>
+            </div>
+          </motion.div>
+        )}
+
+        {!loading && !error && files.length > 0 && (
+          <div className="space-y-6">
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-8"
+            >
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2">
+                <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                  {files.length} {files.length === 1 ? 'File' : 'Files'}
+                </span>{' '}
+                Available
+              </h2>
+              <p className="text-muted-foreground">
+                Click on any file to start the download
+              </p>
+            </motion.div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {files.map((file, index) => (
+                <motion.div
+                  key={file.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="group hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 border-border/50 hover:border-primary/30 overflow-hidden">
+                    <CardHeader className="pb-3">
+                      <div className="flex items-start gap-4">
+                        <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${getFileIcon(file.file_name)} flex items-center justify-center shadow-lg shrink-0`}>
+                          <span className="text-white text-xs font-bold">
+                            {getFileExtension(file.file_name)}
+                          </span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <CardTitle className="text-sm font-medium truncate mb-1">
+                            {file.file_name}
+                          </CardTitle>
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                            <span className="px-2 py-0.5 bg-muted rounded-full">
+                              {file.code}
+                            </span>
+                            <span>•</span>
+                            <span>{file.file_size}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <Button
+                        onClick={() => handleDownload(file)}
+                        className={`w-full group-hover:shadow-md transition-all duration-300 ${downloadedFiles.has(file.id)
+                            ? 'bg-green-600 hover:bg-green-700'
+                            : ''
+                          }`}
+                        variant={downloadedFiles.has(file.id) ? 'default' : 'default'}
+                      >
+                        {downloadedFiles.has(file.id) ? (
+                          <>
+                            <Check className="w-4 h-4" />
+                            Downloaded
+                          </>
+                        ) : (
+                          <>
+                            <Download className="w-4 h-4" />
+                            Download
+                          </>
+                        )}
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
+      </main>
+
+      <footer className="border-t border-border/50 mt-auto">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="text-center text-sm text-muted-foreground">
+            <p>© {new Date().getFullYear()} Nova Ardiansyah. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
