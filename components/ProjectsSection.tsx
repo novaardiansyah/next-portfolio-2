@@ -13,7 +13,7 @@ const projects = [
     image: "/project-1.png",
     technologies: ["React Native", "Expo", "TypeScript", "React Navigation", "React Native Paper", "Laravel Sanctum"],
     date: "2025",
-    githubUrl: "https://github.com/novaardiansyah/react-native-novaapp",
+    githubUrl: "https://github.com/novaardiansyah/NovaApp",
     liveUrl: null,
     featured: true
   },
