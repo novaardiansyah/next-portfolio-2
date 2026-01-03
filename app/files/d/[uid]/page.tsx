@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { Download, FileText, AlertCircle, Loader2, Sun, Moon, Check, Files } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
 
 interface FileItem {
   id: number
@@ -166,17 +167,34 @@ export default function FilesDownloadPage() {
 
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 min-h-[calc(100vh-8rem)] flex flex-col">
         {loading && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="flex flex-col items-center justify-center min-h-[400px] gap-4"
-          >
-            <div className="relative">
-              <div className="w-16 h-16 border-4 border-primary/20 rounded-full" />
-              <Loader2 className="w-16 h-16 text-primary animate-spin absolute inset-0" />
+          <div className="space-y-6">
+            <div className="flex flex-col items-center mb-8 gap-2">
+              <Skeleton className="h-8 w-48 sm:h-10 sm:w-64" />
+              <Skeleton className="h-4 w-72 sm:w-96" />
+              <Skeleton className="h-4 w-48 sm:w-64" />
             </div>
-            <p className="text-muted-foreground">Loading attachments...</p>
-          </motion.div>
+            <div className="grid gap-4 grid-cols-1 sm:grid-cols-3 2xl:grid-cols-4">
+              {[...Array(6)].map((_, i) => (
+                <Card key={i} className="border-border/50 overflow-hidden">
+                  <CardHeader className="p-3 pb-2">
+                    <div className="flex items-center gap-3">
+                      <Skeleton className="w-10 h-10 rounded-lg shrink-0" />
+                      <div className="flex-1 space-y-2 min-w-0">
+                        <Skeleton className="h-4 w-3/4" />
+                        <div className="flex gap-2">
+                          <Skeleton className="h-3 w-1/4" />
+                          <Skeleton className="h-3 w-1/4" />
+                        </div>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="p-3 pt-0">
+                    <Skeleton className="h-9 w-full rounded-md" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
         )}
 
         {error && !loading && (
