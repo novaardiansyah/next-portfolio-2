@@ -25,7 +25,7 @@ This project is built with performance in mind:
 ## Live Version 
 You can explore the live portfolio at: [https://novaardiansyah.id](https://novaardiansyah.id)
 
-<img src="public/markdown/preview-1.png" width="600" alt="API Documentation Preview" />
+<img src="public/markdown/preview-1.png" width="400" alt="API Documentation Preview" />
 
 ## Credentials & Environment 
 
