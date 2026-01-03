@@ -24,7 +24,7 @@ const projects = [
     technologies: ["Laravel 12", "Filament PHP 4", "PHP 8.3+", "MySQL"],
     date: "2025",
     githubUrl: "https://github.com/novaardiansyah/personal-v4",
-    liveUrl: "https://personal-v4.novadev.my.id",
+    liveUrl: "https://personal-v4-demo.novaardiansyah.id",
     featured: true
   },
   {
@@ -123,10 +123,10 @@ export default function ProjectsSection() {
                   </div>
                 </div>
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg lg:text-2xl xl:text-3xl group-hover:text-primary transition-colors line-clamp-1">
+                  <CardTitle className="text-lg font-bold group-hover:text-primary transition-colors line-clamp-1">
                     {project.title}
                   </CardTitle>
-                  <CardDescription className="text-sm lg:text-base xl:text-lg line-clamp-2">
+                  <CardDescription className="text-sm line-clamp-2">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
