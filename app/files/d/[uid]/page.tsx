@@ -52,15 +52,7 @@ export default function FilesDownloadPage() {
         setLoading(true)
         setError(null)
 
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_GO_URL}/emails/${uid}/attachments`,
-          {
-            headers: {
-              'Authorization': `Bearer ${process.env.NEXT_PUBLIC_API_GO_KEY}`,
-              'Content-Type': 'application/json',
-            },
-          }
-        )
+        const response = await fetch(`/api/files/${uid}`)
 
         if (!response.ok) {
           throw new Error('Failed to fetch attachments')
