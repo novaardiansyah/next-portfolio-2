@@ -33,7 +33,7 @@ While this repository is public, please note that all forms of credentials, API 
 
 If you are interested in using this project for specific purposes or require a demo environment, please contact me directly for **exclusive permission**.
 
-## Let's Connect!
+## Let's Connect
 
 Need to chat? Feel free to drop me a line via [Email](mailto:novaardiansyah.dev@gmail.com) or hit me up on [LinkedIn](https://www.linkedin.com/in/novaardiansyah/). I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. 
 
