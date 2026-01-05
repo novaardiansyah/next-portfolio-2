@@ -164,7 +164,7 @@ export default function FilesDownloadPage() {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 min-h-[calc(100vh-8rem)] flex flex-col">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 min-h-[calc(100vh-9.5rem)] flex flex-col">
         {loading && (
           <div className="space-y-6">
             <div className="flex flex-col items-center mb-8 gap-2">
@@ -240,9 +240,8 @@ export default function FilesDownloadPage() {
             >
               <h2 className="text-2xl sm:text-3xl font-bold mb-2">
                 <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                  {files.length} {files.length === 1 ? 'File' : 'Files'}
-                </span>{' '}
-                Available
+                  {files.length} {files.length === 1 ? 'File' : 'Files'} Available
+                </span>
               </h2>
               <p className="text-xs text-muted-foreground/70">
                 Anyone with this link can view and download these files. <br className="hidden sm:block" />Please only share it with people you trust.
