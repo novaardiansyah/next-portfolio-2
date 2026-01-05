@@ -29,12 +29,15 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' }
     ],
     apple: [
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
     ],
+    shortcut: '/favicon.ico',
   },
+  manifest: '/site.webmanifest',
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -42,12 +45,21 @@ export const metadata: Metadata = {
     title: "Nova Ardiansyah - Full Stack Developer Portfolio",
     description: "Passionate full-stack developer creating modern web applications with React, TypeScript, and cutting-edge technologies.",
     siteName: "Nova Ardiansyah Portfolio",
+    images: [
+      {
+        url: "https://novaardiansyah.id/logo-dark-circle.png",
+        width: 512,
+        height: 512,
+        alt: "Nova Ardiansyah Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Nova Ardiansyah - Full Stack Developer Portfolio",
     description: "Passionate full-stack developer creating modern web applications with React, TypeScript, and cutting-edge technologies.",
     creator: "@novaardiansyah",
+    images: ["https://novaardiansyah.id/logo-dark-circle.png"],
   },
   robots: {
     index: true,
