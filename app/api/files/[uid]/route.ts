@@ -8,7 +8,7 @@ export async function GET(
     const { uid } = await params;
 
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_GO_URL}/emails/${uid}/attachments`,
+      `${process.env.NEXT_PUBLIC_API_GO_URL}/files/d/${uid}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_GO_KEY}`,

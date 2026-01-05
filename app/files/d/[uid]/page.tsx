@@ -101,11 +101,6 @@ export default function FilesDownloadPage() {
     return parts.length > 1 ? parts[parts.length - 1].toUpperCase() : 'FILE'
   }
 
-  const getFileNameWithoutExtension = (fileName: string) => {
-    const lastDotIndex = fileName.lastIndexOf('.')
-    return lastDotIndex > 0 ? fileName.substring(0, lastDotIndex) : fileName
-  }
-
   const getFileIcon = (fileName: string) => {
     const ext = fileName.split('.').pop()?.toLowerCase()
     const colors: Record<string, string> = {
@@ -272,7 +267,7 @@ export default function FilesDownloadPage() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <CardTitle className="text-xs font-medium mb-0.5 break-all">
-                            {getFileNameWithoutExtension(file.file_name)}
+                            {file.file_name}
                           </CardTitle>
                           <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
                             <span className="truncate">{file.code}</span>
