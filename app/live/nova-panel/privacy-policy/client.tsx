@@ -116,7 +116,7 @@ const content = {
         intro: "Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini, Anda dapat menghubungi kami:",
         email: "privacy@novaardiansyah.id",
         website: "novaardiansyah.id",
-        phone: "+62 8950 666 8480"
+        phone: "+62 8226 1111 084"
       }
     },
     footer: {
@@ -236,7 +236,7 @@ const content = {
         intro: "If you have any questions about this Privacy Policy, You can contact us:",
         email: "privacy@novaardiansyah.id",
         website: "novaardiansyah.id",
-        phone: "+62 8950 666 8480"
+        phone: "+62 8226 1111 084"
       }
     },
     footer: {
@@ -290,21 +290,19 @@ export function PrivacyPolicyClient() {
               <div className="bg-white dark:bg-gray-700 rounded-full p-1 inline-flex shadow-lg">
                 <button
                   onClick={() => setLanguage('id')}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
-                    language === 'id'
-                      ? 'bg-blue-600 text-white shadow-md'
-                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
-                  }`}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${language === 'id'
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
+                    }`}
                 >
                   🇮🇩 ID
                 </button>
                 <button
                   onClick={() => setLanguage('en')}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
-                    language === 'en'
-                      ? 'bg-blue-600 text-white shadow-md'
-                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
-                  }`}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${language === 'en'
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
+                    }`}
                 >
                   🇬🇧 EN
                 </button>
@@ -465,7 +463,7 @@ export function PrivacyPolicyClient() {
                   <p className="text-gray-600 dark:text-gray-300">
                     <strong className="text-gray-800 dark:text-gray-200">{language === 'id' ? 'Telepon:' : 'Phone:'}</strong>{" "}
                     <a
-                      href={`https://api.whatsapp.com/send/?phone=6289506668480&text=${language === 'id' ? 'Hai+Nova%2C+saya+memiliki+pertanyaan+tentang+Kebijakan+Privasi+untuk+Nova+Panel.+Bisakah+Anda+memberikan+penjelasan+untuk+saya%3F' : 'Hi+Nova%2C+I+have+a+question+about+the+Privacy+Policy+for+Nova+Panel.+Could+you+please+clarify+some+details+for+me%3F'}&type=phone_number&app_absent=0`}
+                      href={`https://api.whatsapp.com/send/?phone=6282261111084&text=${language === 'id' ? 'Hai+Nova%2C+saya+memiliki+pertanyaan+tentang+Kebijakan+Privasi+untuk+Nova+Panel.+Bisakah+Anda+memberikan+penjelasan+untuk+saya%3F' : 'Hi+Nova%2C+I+have+a+question+about+the+Privacy+Policy+for+Nova+Panel.+Could+you+please+clarify+some+details+for+me%3F'}&type=phone_number&app_absent=0`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"

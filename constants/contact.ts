@@ -7,7 +7,7 @@ export const CONTACT_INFO = {
   },
   phone: {
     value: "(+62) 895 0666 8480",
-    link: "https://api.whatsapp.com/send/?phone=6289506668480&text=Hi+Nova%2C+I+would+like+to+connect+with+you+soon%2C+please+get+back+to+me+as+soon+as+possible%21&type=phone_number&app_absent=0"
+    link: "https://api.whatsapp.com/send/?phone=6282261111084&text=Hi+Nova%2C+I+would+like+to+connect+with+you+soon%2C+please+get+back+to+me+as+soon+as+possible%21&type=phone_number&app_absent=0"
   },
   location: {
     value: "Tangerang, Banten, Indonesia",
