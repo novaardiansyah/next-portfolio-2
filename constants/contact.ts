@@ -6,7 +6,7 @@ export const CONTACT_INFO = {
     link: "mailto:admin@novaardiansyah.id"
   },
   phone: {
-    value: "(+62) 895 0666 8480",
+    value: "(+62) 8226 1111 084",
     link: "https://api.whatsapp.com/send/?phone=6282261111084&text=Hi+Nova%2C+I+would+like+to+connect+with+you+soon%2C+please+get+back+to+me+as+soon+as+possible%21&type=phone_number&app_absent=0"
   },
   location: {
