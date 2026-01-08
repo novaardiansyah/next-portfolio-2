@@ -4,11 +4,18 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import Footer from '@/components/Footer'
-import { Download, FileText, AlertCircle, Loader2, Sun, Moon, Check, Files } from 'lucide-react'
+import { Download, FileText, AlertCircle, Sun, Moon, Check, X, ZoomIn } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
 
 interface FileItem {
   id: number
@@ -33,6 +40,7 @@ export default function FilesDownloadPage() {
   const [error, setError] = useState<string | null>(null)
   const [isDark, setIsDark] = useState(false)
   const [downloadedFiles, setDownloadedFiles] = useState<Set<number>>(new Set())
+  const [previewFile, setPreviewFile] = useState<FileItem | null>(null)
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme')
@@ -119,6 +127,11 @@ export default function FilesDownloadPage() {
       gif: 'from-purple-500 to-purple-600',
     }
     return colors[ext || ''] || 'from-gray-500 to-gray-600'
+  }
+
+  const isImageFile = (fileName: string) => {
+    const ext = fileName.split('.').pop()?.toLowerCase()
+    return ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'].includes(ext || '')
   }
 
   return (
@@ -277,27 +290,40 @@ export default function FilesDownloadPage() {
                       </div>
                     </CardHeader>
                     <CardContent className="p-3 pt-0">
-                      <Button
-                        onClick={() => handleDownload(file)}
-                        size="sm"
-                        className={`w-full text-xs group-hover:shadow-md transition-all duration-300 cursor-pointer ${downloadedFiles.has(file.id)
-                          ? 'bg-green-600 hover:bg-green-700'
-                          : ''
-                          }`}
-                        variant={downloadedFiles.has(file.id) ? 'default' : 'default'}
-                      >
-                        {downloadedFiles.has(file.id) ? (
-                          <>
-                            <Check className="w-3 h-3" />
-                            Downloaded
-                          </>
-                        ) : (
-                          <>
-                            <Download className="w-3 h-3" />
-                            Download
-                          </>
+                      <div className="flex gap-2">
+                        {isImageFile(file.file_name) && (
+                          <Button
+                            onClick={() => setPreviewFile(file)}
+                            size="sm"
+                            variant="outline"
+                            className="flex-1 text-xs cursor-pointer"
+                          >
+                            <ZoomIn className="w-3 h-3" />
+                            Preview
+                          </Button>
                         )}
-                      </Button>
+                        <Button
+                          onClick={() => handleDownload(file)}
+                          size="sm"
+                          className={`flex-1 text-xs group-hover:shadow-md transition-all duration-300 cursor-pointer ${downloadedFiles.has(file.id)
+                            ? 'bg-green-600 hover:bg-green-700'
+                            : ''
+                            }`}
+                          variant={downloadedFiles.has(file.id) ? 'default' : 'default'}
+                        >
+                          {downloadedFiles.has(file.id) ? (
+                            <>
+                              <Check className="w-3 h-3" />
+                              Downloaded
+                            </>
+                          ) : (
+                            <>
+                              <Download className="w-3 h-3" />
+                              Download
+                            </>
+                          )}
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -308,6 +334,54 @@ export default function FilesDownloadPage() {
       </main>
 
       <Footer />
+
+      <Dialog open={!!previewFile} onOpenChange={() => setPreviewFile(null)}>
+        <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] p-0 overflow-hidden">
+          <DialogHeader className="p-4 pb-0">
+            <DialogTitle className="text-sm font-medium truncate pr-8">
+              {previewFile?.file_name}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="relative w-full flex-1 min-h-[300px] max-h-[60vh] bg-muted/30">
+            {previewFile && (
+              <Image
+                src={previewFile.download_url}
+                alt={previewFile.file_name}
+                fill
+                className="object-contain"
+                unoptimized
+              />
+            )}
+          </div>
+          <div className="p-4 pt-2 flex items-center justify-between gap-4 border-t">
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <span>{previewFile?.code}</span>
+              <span>•</span>
+              <span>{previewFile?.file_size}</span>
+            </div>
+            <Button
+              onClick={() => previewFile && handleDownload(previewFile)}
+              size="sm"
+              className={`text-xs cursor-pointer ${previewFile && downloadedFiles.has(previewFile.id)
+                ? 'bg-green-600 hover:bg-green-700'
+                : ''
+                }`}
+            >
+              {previewFile && downloadedFiles.has(previewFile.id) ? (
+                <>
+                  <Check className="w-3 h-3" />
+                  Downloaded
+                </>
+              ) : (
+                <>
+                  <Download className="w-3 h-3" />
+                  Download
+                </>
+              )}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
