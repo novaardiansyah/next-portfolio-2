@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
-import { Download, FileText, AlertCircle, Sun, Moon, Check, X, ZoomIn } from 'lucide-react'
+import { Download, FileText, AlertCircle, Sun, Moon, Check, Eye } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -279,7 +279,7 @@ export default function FilesDownloadPage() {
                           </span>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <CardTitle className="text-xs font-medium mb-0.5 break-all">
+                          <CardTitle className="text-xs font-medium mb-0.5 line-clamp-1" title={file.file_alias || file.file_name}>
                             {file.file_alias || file.file_name}
                           </CardTitle>
                           <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
@@ -292,17 +292,15 @@ export default function FilesDownloadPage() {
                     </CardHeader>
                     <CardContent className="p-3 pt-0">
                       <div className="flex gap-2">
-                        {isImageFile(file.file_name) && (
-                          <Button
-                            onClick={() => setPreviewFile(file)}
-                            size="sm"
-                            variant="outline"
-                            className="flex-1 text-xs cursor-pointer"
-                          >
-                            <ZoomIn className="w-3 h-3" />
-                            Preview
-                          </Button>
-                        )}
+                        <Button
+                          onClick={() => setPreviewFile(file)}
+                          size="sm"
+                          variant="outline"
+                          className="flex-1 text-xs cursor-pointer"
+                        >
+                          <Eye className="w-3 h-3" />
+                          Preview
+                        </Button>
                         <Button
                           onClick={() => handleDownload(file)}
                           size="sm"
@@ -337,23 +335,54 @@ export default function FilesDownloadPage() {
       <Footer />
 
       <Dialog open={!!previewFile} onOpenChange={() => setPreviewFile(null)}>
-        <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] p-0 overflow-hidden">
+        <DialogContent className="max-w-2xl w-[95vw] max-h-[90vh] p-0 overflow-hidden">
           <DialogHeader className="p-4 pb-0">
             <DialogTitle className="text-sm font-medium truncate pr-8">
-              {previewFile?.file_name}
+              File Details
             </DialogTitle>
           </DialogHeader>
-          <div className="relative w-full flex-1 min-h-[300px] max-h-[60vh] bg-muted/30">
-            {previewFile && (
-              <Image
-                src={previewFile.download_url}
-                alt={previewFile.file_name}
-                fill
-                className="object-contain"
-                unoptimized
-              />
-            )}
-          </div>
+          {previewFile && isImageFile(previewFile.file_name) && (
+            <>
+              <div className="relative w-full flex-1 min-h-[300px] max-h-[60vh] bg-muted/30">
+                <Image
+                  src={previewFile.download_url}
+                  alt={previewFile.file_name}
+                  fill
+                  className="object-contain"
+                  unoptimized
+                />
+              </div>
+              <div className="px-4 pt-2 text-center space-y-1">
+                <p className="text-sm font-medium break-words">
+                  {previewFile.file_alias || previewFile.file_name}
+                </p>
+                {previewFile.file_alias && previewFile.file_alias !== previewFile.file_name && (
+                  <p className="text-xs text-muted-foreground break-all">
+                    {previewFile.file_name}
+                  </p>
+                )}
+              </div>
+            </>
+          )}
+          {previewFile && !isImageFile(previewFile.file_name) && (
+            <div className="p-6 flex flex-col items-center gap-4">
+              <div className={`w-20 h-20 rounded-xl bg-gradient-to-br ${getFileIcon(previewFile.file_name)} flex items-center justify-center shadow-lg`}>
+                <span className="text-white text-xl font-bold">
+                  {getFileExtension(previewFile.file_name)}
+                </span>
+              </div>
+              <div className="text-center space-y-2">
+                <p className="text-sm font-medium break-words max-w-md">
+                  {previewFile.file_alias || previewFile.file_name}
+                </p>
+                {previewFile.file_alias && previewFile.file_alias !== previewFile.file_name && (
+                  <p className="text-xs text-muted-foreground break-all max-w-md">
+                    {previewFile.file_name}
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
           <div className="p-4 pt-2 flex items-center justify-between gap-4 border-t">
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <span>{previewFile?.code}</span>
