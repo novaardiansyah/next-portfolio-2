@@ -21,6 +21,7 @@ interface FileItem {
   id: number
   code: string
   file_name: string
+  file_alias: string
   file_size: string
   download_url: string
 }
@@ -279,7 +280,7 @@ export default function FilesDownloadPage() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <CardTitle className="text-xs font-medium mb-0.5 break-all">
-                            {file.file_name}
+                            {file.file_alias || file.file_name}
                           </CardTitle>
                           <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
                             <span className="truncate">{file.code}</span>
