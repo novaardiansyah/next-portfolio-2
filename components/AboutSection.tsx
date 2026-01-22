@@ -110,7 +110,7 @@ export default function AboutSection() {
                 </div>
 
                 <div className="pt-4">
-                  <h4 className="text-xl lg:text-2xl font-bold mb-3">Passion Areas</h4>
+                  <h3 className="text-xl lg:text-2xl font-bold mb-3">Passion Areas</h3>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {["API Development", "Database Design", "System Architecture", "PHP Frameworks", "Open Source", "Performance Optimization"].map((interest) => (
                       <Badge key={interest} variant="secondary" className="text-xs px-2 py-1">

@@ -34,7 +34,6 @@ export default function Header() {
   useEffect(() => {
     setIsMounted(true)
 
-    // Check for saved theme preference or respect OS preference
     const savedTheme = localStorage.getItem('theme')
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
 
@@ -47,10 +46,8 @@ export default function Header() {
       document.documentElement.classList.remove('dark')
     }
 
-    // Set initial scroll state
     setIsScrolled(window.scrollY > 50)
 
-    // Debounced scroll handler for better performance
     let scrollTimeout: number
     const handleScroll = () => {
       if (scrollTimeout) {
@@ -60,15 +57,12 @@ export default function Header() {
       scrollTimeout = requestAnimationFrame(() => {
         setIsScrolled(window.scrollY > 50)
 
-        // Skip active section detection during manual navigation
         if (scrollTimeoutRef.current) return
 
-        // Simplified and more responsive active section detection
         const headerHeight = 64
         const scrollPosition = window.scrollY + headerHeight
         const windowHeight = window.innerHeight
 
-        // Simple intersection-based approach for faster response
         let currentActiveSection = activeSection
         let maxVisibility = 0
 
@@ -79,23 +73,19 @@ export default function Header() {
             const elementBottom = elementTop + element.offsetHeight
             const elementHeight = element.offsetHeight
 
-            // Calculate visible portion of element
             const visibleTop = Math.max(elementTop, window.scrollY)
             const visibleBottom = Math.min(elementBottom, window.scrollY + windowHeight)
             const visibleHeight = Math.max(0, visibleBottom - visibleTop)
 
-            // Calculate visibility percentage
             const visibilityPercentage = visibleHeight / elementHeight
 
-            // Bonus for sections that contain the scroll position
             let score = visibilityPercentage
             if (scrollPosition >= elementTop && scrollPosition <= elementBottom) {
-              score += 0.5 // 50% bonus for containing the scroll position
+              score += 0.5 
             }
 
-            // Special bonus for sections near the top of viewport
             if (elementTop <= scrollPosition && elementTop >= scrollPosition - 200) {
-              score += 0.3 // 30% bonus for being near the top
+              score += 0.3
             }
 
             if (score > maxVisibility) {
@@ -105,7 +95,6 @@ export default function Header() {
           }
         }
 
-        // Update active section if different from current
         if (currentActiveSection !== activeSection) {
           setActiveSection(currentActiveSection)
         }
@@ -230,6 +219,7 @@ export default function Header() {
               size="icon"
               onClick={toggleTheme}
               className="rounded-full"
+              aria-label="Toggle Dark Mode"
             >
               {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </Button>

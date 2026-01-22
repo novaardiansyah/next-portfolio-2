@@ -66,15 +66,6 @@ const tools = [
   "Terminal", "Mozilla Firefox", "AI-Agent", "Git", "Composer", "npm", "Chrome DevTools", "Figma", "Docker", "Sql Server Management Studio"
 ]
 
-const keyAchievements = [
-  "Built RESTful APIs with Laravel and Node.js",
-  "Developed Full Stack Web Applications",
-  "Optimized Database Performance",
-  "Created Mobile Apps with React Native",
-  "Implemented Real-time Systems"
-]
-
-// Function to shuffle array
 const shuffleArray = (array: string[]) => {
   const newArray = [...array]
   for (let i = newArray.length - 1; i > 0; i--) {
@@ -88,7 +79,6 @@ export default function SkillsSection() {
   const [shuffledTools, setShuffledTools] = useState<string[]>([])
 
   useEffect(() => {
-    // Shuffle tools only on client side
     setShuffledTools(shuffleArray(tools))
   }, [])
   return (
@@ -155,7 +145,7 @@ export default function SkillsSection() {
                             {skill.level}%
                           </span>
                         </div>
-                        <Progress value={skill.level} className="h-1.5 sm:h-2 lg:h-2.5" />
+                        <Progress value={skill.level} className="h-1.5 sm:h-2 lg:h-2.5" aria-label={'Progressbar ' + skill.name} />
                       </CardContent>
                     </Card>
                   </motion.div>
