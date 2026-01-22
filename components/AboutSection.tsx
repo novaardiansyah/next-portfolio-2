@@ -78,7 +78,7 @@ export default function AboutSection() {
             <Card className="h-full">
               <CardHeader className="text-center">
                 <Avatar className="w-24 h-24 mx-auto mb-4 border-4 border-primary/20">
-                  <AvatarImage src="/original-blue-circle.png" alt="Profile" />
+                  <AvatarImage src="/original-blue-circle.webp" alt="Profile" />
                   <AvatarFallback className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 text-primary-foreground">
                     NA
                   </AvatarFallback>

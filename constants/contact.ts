@@ -25,6 +25,6 @@ export const SOCIAL_LINKS = [
 export const PERSONAL_INFO = {
   name: "Nova Ardiansyah",
   title: "Full Stack Developer",
-  avatar: "/original-blue-circle.png",
+  avatar: "/original-blue-circle.webp",
   description: "I create comprehensive web and mobile applications with strong expertise in both frontend and backend development. With a passion for building robust APIs and database systems while maintaining clean, intuitive user interfaces."
 }

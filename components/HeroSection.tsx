@@ -145,7 +145,7 @@ export default function HeroSection() {
           >
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-6">
               <Avatar className="w-16 h-16 sm:w-20 sm:h-20 border-4 border-primary/20 flex-shrink-0">
-                <AvatarImage src="/original-blue-circle.png" alt="Profile" />
+                <AvatarImage src="/original-blue-circle.webp" alt="Profile" />
                 <AvatarFallback className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 text-primary-foreground">
                   NA
                 </AvatarFallback>
