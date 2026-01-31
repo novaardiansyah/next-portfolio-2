@@ -5,6 +5,10 @@
 
 echo "[setup.sh] Start to execute..."
 
+echo "--> Git Setup"
+sudo git checkout main
+sudo git pull origin main
+
 echo "--> Setup NVM..."
 export NVM_DIR="$HOME/.nvm"
 source $NVM_DIR/nvm.sh
